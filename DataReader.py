@@ -1,4 +1,5 @@
 import pandas as pd
+import datetime as dt
     
 def get_bundeslaender_data():
     bl_data = pd.read_csv('Data\\bundesland.csv', sep=';')
@@ -41,10 +42,12 @@ def get_covid_data():
         if neuGenesen == -1:
             anzahlGenesen = 0
             
+        meldedatum = row['Meldedatum'].replace(' 00:00:00', '')
+        kw = dt.datetime.strptime(meldedatum, '%Y/%m/%d').strftime('%W')
         lk_name = row['Landkreis'].replace('LK ', '').replace('SK ', '').replace('StadtRegion ', '')
         df_list.append([row['Bundesland'], lk_name, anzahlFall, anzahlGenesen, anzahlTodesfall,
-                        row['Altersgruppe'], row['Geschlecht'], row['Meldedatum'].replace(' 00:00:00', '')])
+                        row['Altersgruppe'], row['Geschlecht'], meldedatum, kw])
         
     return pd.DataFrame(df_list, columns=['Bundesland', 'Landkreis', 'AnzahlFall', 'AnzahlGenesen', 
                                           'AnzahlTodesfall', 'Altersgruppe', 'Geschlecht',
-                                          'Meldedatum'])
+                                          'Meldedatum', 'Kalenderwoche'])
