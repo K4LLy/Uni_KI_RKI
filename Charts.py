@@ -3,7 +3,7 @@ import datetime as dt
 
 #Kuchendiagramm
 def generate_pie_chart(covid_data):
-    data = covid_data.groupby(['Altersgruppe']).count()
+    data = covid_data.groupby(['Altersgruppe']).sum()
     
     all_cases = 0
     labels = []
@@ -28,7 +28,7 @@ def generate_pie_chart(covid_data):
 
 #Balkendiagramm
 def generate_bar_chart(covid_data):
-    data = covid_data.groupby(['Geschlecht']).count()
+    data = covid_data.groupby(['Geschlecht']).sum()
     
     counts = []
     header = []
@@ -43,7 +43,7 @@ def generate_bar_chart(covid_data):
     
 #Grafik nach Meldedatum
 def generate_graph(covid_data):
-    data = covid_data.sort_values(by = ['Meldedatum']).groupby(['Meldedatum']).count()
+    data = covid_data.sort_values(by = ['Meldedatum']).groupby(['Meldedatum']).sum()
     
     dates_to_plot = []
     count_dates_to_plot = []
