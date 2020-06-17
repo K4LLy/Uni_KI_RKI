@@ -1,5 +1,4 @@
 import matplotlib.pyplot as matplot
-import datetime as dt
 
 #Kuchendiagramm
 def generate_pie_chart(covid_data):
@@ -72,12 +71,8 @@ def generate_bar_chart(covid_data):
     
     
 #Grafik nach Meldedatum
-def generate_graph(covid_data):
-    for index, row in covid_data.iterrows():
-        kw = dt.datetime.strptime(row['Meldedatum'], '%Y/%m/%d').strftime('%W')
-        row['Meldedatum'] = str(kw)
-    
-    data = covid_data.sort_values(by = ['Meldedatum']).groupby(['Meldedatum']).sum()
+def generate_graph(covid_data):    
+    data = covid_data.sort_values(by = ['Kalenderwoche']).groupby(['Kalenderwoche']).sum()
     
     dates_to_plot = []
     count_dates_to_plot = []
@@ -86,4 +81,8 @@ def generate_graph(covid_data):
         dates_to_plot.append(date)
         count_dates_to_plot.append(row['AnzahlFall'])
     
-    matplot.plot(dates_to_plot, count_dates_to_plot)
+    fig1, ax1 = matplot.subplots()
+    ax1.set_ylabel('Anzahl Neuerkrankungen')
+    ax1.set_xlabel('Kalenderwoche')
+    matplot.title("Anzahl Neuerkrankungen pro KW")    
+    matplot.plot(dates_to_plot, count_dates_to_plot, color='green')
