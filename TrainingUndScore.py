@@ -1,6 +1,6 @@
-
+import numpy as np
 import DataReader as reader
-covid_data = reader.getCovidData()
+covid_data = reader.get_covid_data()
 dataframe = covid_data.groupby(['Meldedatum']).sum()
 
 dataframe = dataframe.filter(items=['AnzahlGenesen'])

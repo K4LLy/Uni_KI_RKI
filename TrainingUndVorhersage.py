@@ -5,7 +5,7 @@ import numpy as np
 from sklearn import datasets, linear_model
 from sklearn.metrics import mean_squared_error, r2_score
 import DataReader as reader
-covid_data = reader.getCovidData()
+covid_data = reader.get_covid_data()
 dataframe = covid_data.groupby(['Meldedatum']).sum()
 
 dataframe = dataframe.filter(items=['AnzahlGenesen'])
