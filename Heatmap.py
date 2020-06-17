@@ -11,11 +11,11 @@ def generate(file_name = "Heatmap"):
         bundeslaender = []
         allRkiData = []
         rkiDaten = []
-        bundeslandBefore = 'null'
-        anzahlFaelle = 0
-        anzahlTodesFaelle = 0
-        anzahlGenesen = 0
-        bundeslaenderNamen = []
+        bundesland_Before = 'null'
+        anzahl_Faelle = 0
+        anzahl_TodesFaelle = 0
+        anzahl_genesen = 0
+        bundeslaender_Namen = []
         faelle = []
         todesfaelle = []
         gesund = []
@@ -24,32 +24,32 @@ def generate(file_name = "Heatmap"):
             rkiDaten = row
             allRkiData.append (row)
             if rkiDaten[2] != 'Bundesland':
-                if bundeslandBefore == rkiDaten[2]:
-                    anzahlFaelle += int(rkiDaten[6])
-                    anzahlTodesFaelle += int(rkiDaten[7])
-                    anzahlGenesen += int(rkiDaten[15])
-                elif bundeslandBefore == 'null':
-                    bundeslandBefore = rkiDaten[2]
-                    anzahlFaelle += int(rkiDaten[6])
-                    anzahlTodesFaelle += int(rkiDaten[7])
-                    anzahlGenesen += int(rkiDaten[15])
-                elif bundeslandBefore != rkiDaten[2]:
-                    bundeslaenderNamen.append(bundeslandBefore)
-                    faelle.append (anzahlFaelle)
-                    todesfaelle.append (anzahlTodesFaelle)
-                    gesund.append (anzahlGenesen)
-                    anzahlFaelle = 0
-                    anzahlTodesFaelle = 0
-                    anzahlGenesen = 0
-                    bundeslandBefore = rkiDaten[2]
+                if bundesland_Before == rkiDaten[2]:
+                    anzahl_Faelle += int(rkiDaten[6])
+                    anzahl_TodesFaelle += int(rkiDaten[7])
+                    anzahl_genesen += int(rkiDaten[15])
+                elif bundesland_Before == 'null':
+                    bundesland_Before = rkiDaten[2]
+                    anzahl_Faelle += int(rkiDaten[6])
+                    anzahl_TodesFaelle += int(rkiDaten[7])
+                    anzahl_genesen += int(rkiDaten[15])
+                elif bundesland_Before != rkiDaten[2]:
+                    bundeslaender_Namen.append(bundesland_Before)
+                    faelle.append (anzahl_Faelle)
+                    todesfaelle.append (anzahl_TodesFaelle)
+                    gesund.append (anzahl_genesen)
+                    anzahl_Faelle = 0
+                    anzahl_TodesFaelle = 0
+                    anzahl_genesen = 0
+                    bundesland_Before = rkiDaten[2]
                 
-        bundeslaenderNamen.append(bundeslandBefore)
-        anzahlFaelle += int(rkiDaten[6])
-        anzahlTodesFaelle += int(rkiDaten[7])
-        anzahlGenesen += int(rkiDaten[15])
-        faelle.append (anzahlFaelle)
-        todesfaelle.append (anzahlTodesFaelle)
-        gesund.append (anzahlGenesen)            
+        bundeslaender_Namen.append(bundesland_Before)
+        anzahl_Faelle += int(rkiDaten[6])
+        anzahl_TodesFaelle += int(rkiDaten[7])
+        anzahl_genesen += int(rkiDaten[15])
+        faelle.append (anzahl_Faelle)
+        todesfaelle.append (anzahl_TodesFaelle)
+        gesund.append (anzahl_genesen)            
     #Karte mit Fokus auf Deutschland 
     folium_map = folium.Map(location=[51.144, 9.902],
                             zoom_start=6.5,
@@ -58,12 +58,12 @@ def generate(file_name = "Heatmap"):
 
     #pro Bundesland Kreis zeichnen
     index = 0
-    for bundesland in bundeslaenderNamen:
+    for bundesland in bundeslaender_Namen:
         bundesland = bundesland.replace('Ã¼','ü')
         anzahl_faelle = faelle[index]
         anzahl_todesfaelle = todesfaelle[index]
         anzahl_genesen = gesund[index]
-        anzeige_string = str(anzahl_faelle) + " Fälle insgesamt in " + bundesland
+        anzeige_string = str(anzahl_faelle) + " Fälle insgesamt, " + str(anzahl_genesen) + " gesunde Fälle und "+ str(anzahl_todesfaelle) + " Todesfälle in " + bundesland
         location = geolocator.geocode(bundesland) #mit dem Geolocator können die Koordinaten von dem Bundesland hergeholt werden
         folium.Circle(
             location = [location.latitude, location.longitude], #Kreis liegt auf dem Zentrum des Bundeslandes
