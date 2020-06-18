@@ -1,9 +1,4 @@
-
-import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
-from sklearn import datasets, linear_model
-from sklearn.metrics import mean_squared_error, r2_score
 import DataReader as reader
 covid_data = reader.get_covid_data()
 dataframe = covid_data.groupby(['Meldedatum']).sum()
@@ -14,6 +9,7 @@ for i in range(5):
     i = i +1
     newdata = dataframe.shift(i, axis = 0)
     dataframe.loc[:,('Genes-'+str(i))] = newdata['AnzahlGenesen']
+    
 newdata = dataframe.shift(i-5, axis = 0)
 dataframe.loc[:,'AnzahlGenesen'] = newdata  
 
@@ -42,5 +38,5 @@ dataframe['Forecast'] = np.nan
 for i in range(5):
     dataframe.iloc[-(5-i), dataframe.columns.get_loc('Forecast')] = labels_pred[i]
     
-dataframe.loc[dataframe.index[-30]:, 'AnzahlGenesen'].plot(title="AnzahlGenesen")
-dataframe.loc[dataframe.index[-30]:, 'Forecast'].plot(title="AnzahlGenesen in den letzten 30 Tagen: Tatsächlich und Vorhersage")
+dataframe.loc[dataframe.index[-30]:, 'AnzahlGenesen'].plot(title="AnzahlGenesen",  rot=45)
+dataframe.loc[dataframe.index[-30]:, 'Forecast'].plot(title="AnzahlGenesen in den letzten 30 Tagen: Tatsächlich und Vorhersage", rot=45)
