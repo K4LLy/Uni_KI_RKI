@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d363235747444cabb4d9e78419b50abc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_d363235747444cabb4d9e78419b50abc" ></div>
+        
+</body>
+<script>    
+    
+            var map_d363235747444cabb4d9e78419b50abc = L.map(
+                "map_d363235747444cabb4d9e78419b50abc",
+                {
+                    center: [51.144, 9.902],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6.5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2eb72633dd5249a8b78168b45a3f2c37 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+            var circle_24707b20c5b7404ebcd3700eff69dd2d = L.circle(
+                [48.6296972, 9.1949534],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 69592.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_cc75db3b19474c1ba14bd45948a4b656 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7a488741e3bb4b7b9ebf2d4b37a458bb = $(`<div id="html_7a488741e3bb4b7b9ebf2d4b37a458bb" style="width: 100.0%; height: 100.0%;">34796 Fälle insgesamt, 32068 gesunde Fälle und 1758 Todesfälle in Baden-Württemberg</div>`)[0];
+            popup_cc75db3b19474c1ba14bd45948a4b656.setContent(html_7a488741e3bb4b7b9ebf2d4b37a458bb);
+        
+
+        circle_24707b20c5b7404ebcd3700eff69dd2d.bindPopup(popup_cc75db3b19474c1ba14bd45948a4b656)
+        ;
+
+        
+    
+    
+            var circle_8223250536b545d5940ca64693bb9842 = L.circle(
+                [48.6296972, 9.1949534],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 64136.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_064becce71d1451aa75eb3c6c3968147 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_82ba16557f56449cb2e8e431b4613a2d = $(`<div id="html_82ba16557f56449cb2e8e431b4613a2d" style="width: 100.0%; height: 100.0%;">34796 Fälle insgesamt, 32068 gesunde Fälle und 1758 Todesfälle in Baden-Württemberg</div>`)[0];
+            popup_064becce71d1451aa75eb3c6c3968147.setContent(html_82ba16557f56449cb2e8e431b4613a2d);
+        
+
+        circle_8223250536b545d5940ca64693bb9842.bindPopup(popup_064becce71d1451aa75eb3c6c3968147)
+        ;
+
+        
+    
+    
+            var circle_5ea81fe51ea94c439f6e391893034858 = L.circle(
+                [48.6296972, 9.1949534],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3516.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_1df7b9e6c0154ba385ac6635d3e7bc83 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_ff9556548657430bac041670ffbd3e0e = $(`<div id="html_ff9556548657430bac041670ffbd3e0e" style="width: 100.0%; height: 100.0%;">34796 Fälle insgesamt, 32068 gesunde Fälle und 1758 Todesfälle in Baden-Württemberg</div>`)[0];
+            popup_1df7b9e6c0154ba385ac6635d3e7bc83.setContent(html_ff9556548657430bac041670ffbd3e0e);
+        
+
+        circle_5ea81fe51ea94c439f6e391893034858.bindPopup(popup_1df7b9e6c0154ba385ac6635d3e7bc83)
+        ;
+
+        
+    
+    
+            var circle_3c0e85cbf8ac4f5cb710f38caaa46d3c = L.circle(
+                [48.9467562, 11.4038717],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 94058.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_767ae09daff64452aab1841e0f04a936 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3ac0db22b6404d38b40de4873c8ea590 = $(`<div id="html_3ac0db22b6404d38b40de4873c8ea590" style="width: 100.0%; height: 100.0%;">47029 Fälle insgesamt, 43004 gesunde Fälle und 2456 Todesfälle in Bayern</div>`)[0];
+            popup_767ae09daff64452aab1841e0f04a936.setContent(html_3ac0db22b6404d38b40de4873c8ea590);
+        
+
+        circle_3c0e85cbf8ac4f5cb710f38caaa46d3c.bindPopup(popup_767ae09daff64452aab1841e0f04a936)
+        ;
+
+        
+    
+    
+            var circle_ed90a564f14341f69995d54b2eedf648 = L.circle(
+                [48.9467562, 11.4038717],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 86008.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_972caafe7d9d45469fd7770c60b829bc = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9da86de099b74f8a903689b4bc1ededd = $(`<div id="html_9da86de099b74f8a903689b4bc1ededd" style="width: 100.0%; height: 100.0%;">47029 Fälle insgesamt, 43004 gesunde Fälle und 2456 Todesfälle in Bayern</div>`)[0];
+            popup_972caafe7d9d45469fd7770c60b829bc.setContent(html_9da86de099b74f8a903689b4bc1ededd);
+        
+
+        circle_ed90a564f14341f69995d54b2eedf648.bindPopup(popup_972caafe7d9d45469fd7770c60b829bc)
+        ;
+
+        
+    
+    
+            var circle_cc85d16cb43d44aebcfd37c7989bd7c5 = L.circle(
+                [48.9467562, 11.4038717],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4912.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_b19439274ca245a8b0ba1e335f542641 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c49c2f67e38a432184c9a7b1ca4895d8 = $(`<div id="html_c49c2f67e38a432184c9a7b1ca4895d8" style="width: 100.0%; height: 100.0%;">47029 Fälle insgesamt, 43004 gesunde Fälle und 2456 Todesfälle in Bayern</div>`)[0];
+            popup_b19439274ca245a8b0ba1e335f542641.setContent(html_c49c2f67e38a432184c9a7b1ca4895d8);
+        
+
+        circle_cc85d16cb43d44aebcfd37c7989bd7c5.bindPopup(popup_b19439274ca245a8b0ba1e335f542641)
+        ;
+
+        
+    
+    
+            var circle_27c2ea84c7f04076a3fd0c3f30829c35 = L.circle(
+                [52.5170365, 13.3888599],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13678.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_55a9a5e0eadd471481d0df22d112e77b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_29b44b60d65c4788926a821da30a6d1d = $(`<div id="html_29b44b60d65c4788926a821da30a6d1d" style="width: 100.0%; height: 100.0%;">6839 Fälle insgesamt, 6344 gesunde Fälle und 198 Todesfälle in Berlin</div>`)[0];
+            popup_55a9a5e0eadd471481d0df22d112e77b.setContent(html_29b44b60d65c4788926a821da30a6d1d);
+        
+
+        circle_27c2ea84c7f04076a3fd0c3f30829c35.bindPopup(popup_55a9a5e0eadd471481d0df22d112e77b)
+        ;
+
+        
+    
+    
+            var circle_e77e017047a247108c44e93112391476 = L.circle(
+                [52.5170365, 13.3888599],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12688.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_6a38b6eec78244ebb78e8ca3a2ff515d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fcc3d66898604e348ba1e97ed08b4dba = $(`<div id="html_fcc3d66898604e348ba1e97ed08b4dba" style="width: 100.0%; height: 100.0%;">6839 Fälle insgesamt, 6344 gesunde Fälle und 198 Todesfälle in Berlin</div>`)[0];
+            popup_6a38b6eec78244ebb78e8ca3a2ff515d.setContent(html_fcc3d66898604e348ba1e97ed08b4dba);
+        
+
+        circle_e77e017047a247108c44e93112391476.bindPopup(popup_6a38b6eec78244ebb78e8ca3a2ff515d)
+        ;
+
+        
+    
+    
+            var circle_046b034f77a746c996d35e0d225bb0f2 = L.circle(
+                [52.5170365, 13.3888599],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 396.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_8d0e61abead0423c8cc25d02b67db3aa = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1fba2842d5564b278845e0c031af8138 = $(`<div id="html_1fba2842d5564b278845e0c031af8138" style="width: 100.0%; height: 100.0%;">6839 Fälle insgesamt, 6344 gesunde Fälle und 198 Todesfälle in Berlin</div>`)[0];
+            popup_8d0e61abead0423c8cc25d02b67db3aa.setContent(html_1fba2842d5564b278845e0c031af8138);
+        
+
+        circle_046b034f77a746c996d35e0d225bb0f2.bindPopup(popup_8d0e61abead0423c8cc25d02b67db3aa)
+        ;
+
+        
+    
+    
+            var circle_b7c754cde1ec4d4d958321916e4b7fd4 = L.circle(
+                [52.8455492, 13.2461296],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6548.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_5bae5e64cf704906b03d132d6547b8d5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_8dfa1ac22d134a159e26f5670490bc70 = $(`<div id="html_8dfa1ac22d134a159e26f5670490bc70" style="width: 100.0%; height: 100.0%;">3274 Fälle insgesamt, 3040 gesunde Fälle und 155 Todesfälle in Brandenburg</div>`)[0];
+            popup_5bae5e64cf704906b03d132d6547b8d5.setContent(html_8dfa1ac22d134a159e26f5670490bc70);
+        
+
+        circle_b7c754cde1ec4d4d958321916e4b7fd4.bindPopup(popup_5bae5e64cf704906b03d132d6547b8d5)
+        ;
+
+        
+    
+    
+            var circle_1cf800d05b004032bc18da9f05004fbd = L.circle(
+                [52.8455492, 13.2461296],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6080.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_e9f9b8c332e640cf80c571d258640d64 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_98d7fb2f2609432db8943e847e863f98 = $(`<div id="html_98d7fb2f2609432db8943e847e863f98" style="width: 100.0%; height: 100.0%;">3274 Fälle insgesamt, 3040 gesunde Fälle und 155 Todesfälle in Brandenburg</div>`)[0];
+            popup_e9f9b8c332e640cf80c571d258640d64.setContent(html_98d7fb2f2609432db8943e847e863f98);
+        
+
+        circle_1cf800d05b004032bc18da9f05004fbd.bindPopup(popup_e9f9b8c332e640cf80c571d258640d64)
+        ;
+
+        
+    
+    
+            var circle_74adbbd75faa4a4dbf3a03aaf26d1f69 = L.circle(
+                [52.8455492, 13.2461296],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 310.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_c3e3f4d3585b4608beacb6a18c83569c = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fe8119d8022340e2bd343e1f1cf57f98 = $(`<div id="html_fe8119d8022340e2bd343e1f1cf57f98" style="width: 100.0%; height: 100.0%;">3274 Fälle insgesamt, 3040 gesunde Fälle und 155 Todesfälle in Brandenburg</div>`)[0];
+            popup_c3e3f4d3585b4608beacb6a18c83569c.setContent(html_fe8119d8022340e2bd343e1f1cf57f98);
+        
+
+        circle_74adbbd75faa4a4dbf3a03aaf26d1f69.bindPopup(popup_c3e3f4d3585b4608beacb6a18c83569c)
+        ;
+
+        
+    
+    
+            var circle_ab387552195a4a189385c3a407038c55 = L.circle(
+                [53.0758196, 8.8071646],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2872.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_35392ca8bc5b47a8a9458455548f1ac5 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_181caf6b60b549dc83ad6a439c502ca2 = $(`<div id="html_181caf6b60b549dc83ad6a439c502ca2" style="width: 100.0%; height: 100.0%;">1436 Fälle insgesamt, 1206 gesunde Fälle und 42 Todesfälle in Bremen</div>`)[0];
+            popup_35392ca8bc5b47a8a9458455548f1ac5.setContent(html_181caf6b60b549dc83ad6a439c502ca2);
+        
+
+        circle_ab387552195a4a189385c3a407038c55.bindPopup(popup_35392ca8bc5b47a8a9458455548f1ac5)
+        ;
+
+        
+    
+    
+            var circle_128048bf75bd4fab98e2caca7a11d796 = L.circle(
+                [53.0758196, 8.8071646],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2412.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_f19d634cfc87432ab8f6c34ac7ff1dc7 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_2cdd4ba87f374a068aeb7c12655abc99 = $(`<div id="html_2cdd4ba87f374a068aeb7c12655abc99" style="width: 100.0%; height: 100.0%;">1436 Fälle insgesamt, 1206 gesunde Fälle und 42 Todesfälle in Bremen</div>`)[0];
+            popup_f19d634cfc87432ab8f6c34ac7ff1dc7.setContent(html_2cdd4ba87f374a068aeb7c12655abc99);
+        
+
+        circle_128048bf75bd4fab98e2caca7a11d796.bindPopup(popup_f19d634cfc87432ab8f6c34ac7ff1dc7)
+        ;
+
+        
+    
+    
+            var circle_f2454484cb4d46fe96f8d267b2c81875 = L.circle(
+                [53.0758196, 8.8071646],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 84.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_8df4cce83b9b485a899e962c3d1793a8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_a1110f590ce34af2aad115cd9345b8dd = $(`<div id="html_a1110f590ce34af2aad115cd9345b8dd" style="width: 100.0%; height: 100.0%;">1436 Fälle insgesamt, 1206 gesunde Fälle und 42 Todesfälle in Bremen</div>`)[0];
+            popup_8df4cce83b9b485a899e962c3d1793a8.setContent(html_a1110f590ce34af2aad115cd9345b8dd);
+        
+
+        circle_f2454484cb4d46fe96f8d267b2c81875.bindPopup(popup_8df4cce83b9b485a899e962c3d1793a8)
+        ;
+
+        
+    
+    
+            var circle_c7c66ed15a9f466d90a8bc2836397212 = L.circle(
+                [53.5437641, 10.0099133],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10196.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_23192ca4cf1f442083d3bbcf7ba5edbd = L.popup({"maxWidth": "100%"});
+
+        
+            var html_09be7cbe8b3b43df8fd24f30ef86bcc7 = $(`<div id="html_09be7cbe8b3b43df8fd24f30ef86bcc7" style="width: 100.0%; height: 100.0%;">5098 Fälle insgesamt, 4755 gesunde Fälle und 253 Todesfälle in Hamburg</div>`)[0];
+            popup_23192ca4cf1f442083d3bbcf7ba5edbd.setContent(html_09be7cbe8b3b43df8fd24f30ef86bcc7);
+        
+
+        circle_c7c66ed15a9f466d90a8bc2836397212.bindPopup(popup_23192ca4cf1f442083d3bbcf7ba5edbd)
+        ;
+
+        
+    
+    
+            var circle_1a3b5585c8694f0ea34b46d98fd8f42c = L.circle(
+                [53.5437641, 10.0099133],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9510.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_6aa85c08896b409898c20c5cbf9a09c6 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_39615177911342e7819f6eb4756e4c2a = $(`<div id="html_39615177911342e7819f6eb4756e4c2a" style="width: 100.0%; height: 100.0%;">5098 Fälle insgesamt, 4755 gesunde Fälle und 253 Todesfälle in Hamburg</div>`)[0];
+            popup_6aa85c08896b409898c20c5cbf9a09c6.setContent(html_39615177911342e7819f6eb4756e4c2a);
+        
+
+        circle_1a3b5585c8694f0ea34b46d98fd8f42c.bindPopup(popup_6aa85c08896b409898c20c5cbf9a09c6)
+        ;
+
+        
+    
+    
+            var circle_9f789a714fbb4c5cae560380eb9cdb53 = L.circle(
+                [53.5437641, 10.0099133],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 506.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_98c6f1c5e3e84311aa4a936fdf296581 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_650671382064459390ff81c735083352 = $(`<div id="html_650671382064459390ff81c735083352" style="width: 100.0%; height: 100.0%;">5098 Fälle insgesamt, 4755 gesunde Fälle und 253 Todesfälle in Hamburg</div>`)[0];
+            popup_98c6f1c5e3e84311aa4a936fdf296581.setContent(html_650671382064459390ff81c735083352);
+        
+
+        circle_9f789a714fbb4c5cae560380eb9cdb53.bindPopup(popup_98c6f1c5e3e84311aa4a936fdf296581)
+        ;
+
+        
+    
+    
+            var circle_fe1528404df94f3c9d9134ab8c9c073b = L.circle(
+                [50.6118537, 9.1909725],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20120.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_eb9e2efd2b7d483b9071809bd663479f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_7d611bfbc6ab4605a16b4e458a03efba = $(`<div id="html_7d611bfbc6ab4605a16b4e458a03efba" style="width: 100.0%; height: 100.0%;">10060 Fälle insgesamt, 9016 gesunde Fälle und 480 Todesfälle in Hessen</div>`)[0];
+            popup_eb9e2efd2b7d483b9071809bd663479f.setContent(html_7d611bfbc6ab4605a16b4e458a03efba);
+        
+
+        circle_fe1528404df94f3c9d9134ab8c9c073b.bindPopup(popup_eb9e2efd2b7d483b9071809bd663479f)
+        ;
+
+        
+    
+    
+            var circle_83cfc1ed7d60492994de1372ea8ee9c9 = L.circle(
+                [50.6118537, 9.1909725],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18032.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_9427fa455b86495c86751c493e678e0d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_c261262ddf48469e8c26a322a8ece7d0 = $(`<div id="html_c261262ddf48469e8c26a322a8ece7d0" style="width: 100.0%; height: 100.0%;">10060 Fälle insgesamt, 9016 gesunde Fälle und 480 Todesfälle in Hessen</div>`)[0];
+            popup_9427fa455b86495c86751c493e678e0d.setContent(html_c261262ddf48469e8c26a322a8ece7d0);
+        
+
+        circle_83cfc1ed7d60492994de1372ea8ee9c9.bindPopup(popup_9427fa455b86495c86751c493e678e0d)
+        ;
+
+        
+    
+    
+            var circle_47c65501d6064ab18ccf30088e130922 = L.circle(
+                [50.6118537, 9.1909725],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 960.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_9bfb04b7693e4127978825828ba32bd3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1e496ec7adbb40c084a4529e011be1a9 = $(`<div id="html_1e496ec7adbb40c084a4529e011be1a9" style="width: 100.0%; height: 100.0%;">10060 Fälle insgesamt, 9016 gesunde Fälle und 480 Todesfälle in Hessen</div>`)[0];
+            popup_9bfb04b7693e4127978825828ba32bd3.setContent(html_1e496ec7adbb40c084a4529e011be1a9);
+        
+
+        circle_47c65501d6064ab18ccf30088e130922.bindPopup(popup_9bfb04b7693e4127978825828ba32bd3)
+        ;
+
+        
+    
+    
+            var circle_2ae8df2c7ae544bdb814a617d2fe258d = L.circle(
+                [53.7735234, 12.5755746],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1522.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_7473a4b026f544d386820e6fe5eca755 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0a977482ada145b7851d0168de5b2a91 = $(`<div id="html_0a977482ada145b7851d0168de5b2a91" style="width: 100.0%; height: 100.0%;">761 Fälle insgesamt, 726 gesunde Fälle und 20 Todesfälle in Mecklenburg-Vorpommern</div>`)[0];
+            popup_7473a4b026f544d386820e6fe5eca755.setContent(html_0a977482ada145b7851d0168de5b2a91);
+        
+
+        circle_2ae8df2c7ae544bdb814a617d2fe258d.bindPopup(popup_7473a4b026f544d386820e6fe5eca755)
+        ;
+
+        
+    
+    
+            var circle_ec34a49fd07544d7acba2e3899193639 = L.circle(
+                [53.7735234, 12.5755746],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1452.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_2bf3661ea0ba44acb990d2e04dcf646e = L.popup({"maxWidth": "100%"});
+
+        
+            var html_bd12940e4b684f4bb9088243cf6ca356 = $(`<div id="html_bd12940e4b684f4bb9088243cf6ca356" style="width: 100.0%; height: 100.0%;">761 Fälle insgesamt, 726 gesunde Fälle und 20 Todesfälle in Mecklenburg-Vorpommern</div>`)[0];
+            popup_2bf3661ea0ba44acb990d2e04dcf646e.setContent(html_bd12940e4b684f4bb9088243cf6ca356);
+        
+
+        circle_ec34a49fd07544d7acba2e3899193639.bindPopup(popup_2bf3661ea0ba44acb990d2e04dcf646e)
+        ;
+
+        
+    
+    
+            var circle_f8f222cdc85841e791dea0fae2c2f379 = L.circle(
+                [53.7735234, 12.5755746],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_bd578aa8df70453cb2090826f904430b = L.popup({"maxWidth": "100%"});
+
+        
+            var html_02a3dc0ded994236983270f2dfac0f47 = $(`<div id="html_02a3dc0ded994236983270f2dfac0f47" style="width: 100.0%; height: 100.0%;">761 Fälle insgesamt, 726 gesunde Fälle und 20 Todesfälle in Mecklenburg-Vorpommern</div>`)[0];
+            popup_bd578aa8df70453cb2090826f904430b.setContent(html_02a3dc0ded994236983270f2dfac0f47);
+        
+
+        circle_f8f222cdc85841e791dea0fae2c2f379.bindPopup(popup_bd578aa8df70453cb2090826f904430b)
+        ;
+
+        
+    
+    
+            var circle_38f3485eda544477bc6f14591ffff803 = L.circle(
+                [52.8398531, 9.075962],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24130.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_c483cd1228b94982b85697092afee2ab = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d351a2085e0640f3bf0364b90be33f81 = $(`<div id="html_d351a2085e0640f3bf0364b90be33f81" style="width: 100.0%; height: 100.0%;">12065 Fälle insgesamt, 10719 gesunde Fälle und 594 Todesfälle in Niedersachsen</div>`)[0];
+            popup_c483cd1228b94982b85697092afee2ab.setContent(html_d351a2085e0640f3bf0364b90be33f81);
+        
+
+        circle_38f3485eda544477bc6f14591ffff803.bindPopup(popup_c483cd1228b94982b85697092afee2ab)
+        ;
+
+        
+    
+    
+            var circle_f9dc806c0e244ad9bf7835c4dba6db34 = L.circle(
+                [52.8398531, 9.075962],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 21438.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_457b7888af8e4bad98fc222e282ca408 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9558f95f2e17483e93cf40adeb3f24cb = $(`<div id="html_9558f95f2e17483e93cf40adeb3f24cb" style="width: 100.0%; height: 100.0%;">12065 Fälle insgesamt, 10719 gesunde Fälle und 594 Todesfälle in Niedersachsen</div>`)[0];
+            popup_457b7888af8e4bad98fc222e282ca408.setContent(html_9558f95f2e17483e93cf40adeb3f24cb);
+        
+
+        circle_f9dc806c0e244ad9bf7835c4dba6db34.bindPopup(popup_457b7888af8e4bad98fc222e282ca408)
+        ;
+
+        
+    
+    
+            var circle_227e03b88579484ebc2fe283076b9215 = L.circle(
+                [52.8398531, 9.075962],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1188.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_364dc10825a848d9a65bb7f9e18b7b71 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1490d43d14ff4a21a6357b25aecea146 = $(`<div id="html_1490d43d14ff4a21a6357b25aecea146" style="width: 100.0%; height: 100.0%;">12065 Fälle insgesamt, 10719 gesunde Fälle und 594 Todesfälle in Niedersachsen</div>`)[0];
+            popup_364dc10825a848d9a65bb7f9e18b7b71.setContent(html_1490d43d14ff4a21a6357b25aecea146);
+        
+
+        circle_227e03b88579484ebc2fe283076b9215.bindPopup(popup_364dc10825a848d9a65bb7f9e18b7b71)
+        ;
+
+        
+    
+    
+            var circle_48825a90f95a4ed4a2012bc3665f6ef5 = L.circle(
+                [51.4781796, 7.5542336],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 76200.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_d5c20e5db8344aa89413856d21e7be17 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0041bc56cd9b4fb8bf9138e1b43c68bf = $(`<div id="html_0041bc56cd9b4fb8bf9138e1b43c68bf" style="width: 100.0%; height: 100.0%;">38100 Fälle insgesamt, 34815 gesunde Fälle und 1599 Todesfälle in Nordrhein-Westfalen</div>`)[0];
+            popup_d5c20e5db8344aa89413856d21e7be17.setContent(html_0041bc56cd9b4fb8bf9138e1b43c68bf);
+        
+
+        circle_48825a90f95a4ed4a2012bc3665f6ef5.bindPopup(popup_d5c20e5db8344aa89413856d21e7be17)
+        ;
+
+        
+    
+    
+            var circle_1debbfe4d6c147418d19dda1408034cb = L.circle(
+                [51.4781796, 7.5542336],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 69630.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_e12a6303330e4ddd807e7d5160cea6dc = L.popup({"maxWidth": "100%"});
+
+        
+            var html_502aab909fb04f1fac15c34ee4b894f7 = $(`<div id="html_502aab909fb04f1fac15c34ee4b894f7" style="width: 100.0%; height: 100.0%;">38100 Fälle insgesamt, 34815 gesunde Fälle und 1599 Todesfälle in Nordrhein-Westfalen</div>`)[0];
+            popup_e12a6303330e4ddd807e7d5160cea6dc.setContent(html_502aab909fb04f1fac15c34ee4b894f7);
+        
+
+        circle_1debbfe4d6c147418d19dda1408034cb.bindPopup(popup_e12a6303330e4ddd807e7d5160cea6dc)
+        ;
+
+        
+    
+    
+            var circle_07b717e4a0d743d39eba770f005873fb = L.circle(
+                [51.4781796, 7.5542336],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3198.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_2ea06fe8b4fa43019ba7dda1a6656575 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_35212a6dd2b34b6a912afdd8f9242e3a = $(`<div id="html_35212a6dd2b34b6a912afdd8f9242e3a" style="width: 100.0%; height: 100.0%;">38100 Fälle insgesamt, 34815 gesunde Fälle und 1599 Todesfälle in Nordrhein-Westfalen</div>`)[0];
+            popup_2ea06fe8b4fa43019ba7dda1a6656575.setContent(html_35212a6dd2b34b6a912afdd8f9242e3a);
+        
+
+        circle_07b717e4a0d743d39eba770f005873fb.bindPopup(popup_2ea06fe8b4fa43019ba7dda1a6656575)
+        ;
+
+        
+    
+    
+            var circle_96a8ef242cec47449901452ed23b08cd = L.circle(
+                [49.9531599, 7.310646],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13408.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_0f9a5232d2eb4ba9b7fdcf783a82277a = L.popup({"maxWidth": "100%"});
+
+        
+            var html_eb3306fc9bab4200ab56150a06c7abdc = $(`<div id="html_eb3306fc9bab4200ab56150a06c7abdc" style="width: 100.0%; height: 100.0%;">6704 Fälle insgesamt, 6281 gesunde Fälle und 230 Todesfälle in Rheinland-Pfalz</div>`)[0];
+            popup_0f9a5232d2eb4ba9b7fdcf783a82277a.setContent(html_eb3306fc9bab4200ab56150a06c7abdc);
+        
+
+        circle_96a8ef242cec47449901452ed23b08cd.bindPopup(popup_0f9a5232d2eb4ba9b7fdcf783a82277a)
+        ;
+
+        
+    
+    
+            var circle_24644299ed254a4cb5188d8514adb909 = L.circle(
+                [49.9531599, 7.310646],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12562.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_1eca5819832443babcbddad673cb588d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_537da2c76f88441c9a414941cd0059ab = $(`<div id="html_537da2c76f88441c9a414941cd0059ab" style="width: 100.0%; height: 100.0%;">6704 Fälle insgesamt, 6281 gesunde Fälle und 230 Todesfälle in Rheinland-Pfalz</div>`)[0];
+            popup_1eca5819832443babcbddad673cb588d.setContent(html_537da2c76f88441c9a414941cd0059ab);
+        
+
+        circle_24644299ed254a4cb5188d8514adb909.bindPopup(popup_1eca5819832443babcbddad673cb588d)
+        ;
+
+        
+    
+    
+            var circle_4a18f25f26f34cba929a1149bb46c094 = L.circle(
+                [49.9531599, 7.310646],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 460.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_7e8eb2b5f9cf4a98a71de85a3a65b4be = L.popup({"maxWidth": "100%"});
+
+        
+            var html_3796b815ac624bc3acea1e9a09848644 = $(`<div id="html_3796b815ac624bc3acea1e9a09848644" style="width: 100.0%; height: 100.0%;">6704 Fälle insgesamt, 6281 gesunde Fälle und 230 Todesfälle in Rheinland-Pfalz</div>`)[0];
+            popup_7e8eb2b5f9cf4a98a71de85a3a65b4be.setContent(html_3796b815ac624bc3acea1e9a09848644);
+        
+
+        circle_4a18f25f26f34cba929a1149bb46c094.bindPopup(popup_7e8eb2b5f9cf4a98a71de85a3a65b4be)
+        ;
+
+        
+    
+    
+            var circle_7fd81fd500154d4f9020d0a5eefb07ac = L.circle(
+                [49.4173988, 6.9805789],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5460.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_ef74cc047db544bfb03c12cfb910a69d = L.popup({"maxWidth": "100%"});
+
+        
+            var html_515d76e17587468baf83daa7975d05fc = $(`<div id="html_515d76e17587468baf83daa7975d05fc" style="width: 100.0%; height: 100.0%;">2730 Fälle insgesamt, 2525 gesunde Fälle und 163 Todesfälle in Saarland</div>`)[0];
+            popup_ef74cc047db544bfb03c12cfb910a69d.setContent(html_515d76e17587468baf83daa7975d05fc);
+        
+
+        circle_7fd81fd500154d4f9020d0a5eefb07ac.bindPopup(popup_ef74cc047db544bfb03c12cfb910a69d)
+        ;
+
+        
+    
+    
+            var circle_4821d32e679f490784e9c422f11ba7fc = L.circle(
+                [49.4173988, 6.9805789],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5050.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_decbcf6ffc834780b18ac064ce29cab0 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_9f0e821f16554d0da719c18713d61369 = $(`<div id="html_9f0e821f16554d0da719c18713d61369" style="width: 100.0%; height: 100.0%;">2730 Fälle insgesamt, 2525 gesunde Fälle und 163 Todesfälle in Saarland</div>`)[0];
+            popup_decbcf6ffc834780b18ac064ce29cab0.setContent(html_9f0e821f16554d0da719c18713d61369);
+        
+
+        circle_4821d32e679f490784e9c422f11ba7fc.bindPopup(popup_decbcf6ffc834780b18ac064ce29cab0)
+        ;
+
+        
+    
+    
+            var circle_d07f0435e1054727a02812723553dbd7 = L.circle(
+                [49.4173988, 6.9805789],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 326.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_d305578f936c466b86b48ebb8f2ab54f = L.popup({"maxWidth": "100%"});
+
+        
+            var html_060486f37232407c8cf9c239bc5b668e = $(`<div id="html_060486f37232407c8cf9c239bc5b668e" style="width: 100.0%; height: 100.0%;">2730 Fälle insgesamt, 2525 gesunde Fälle und 163 Todesfälle in Saarland</div>`)[0];
+            popup_d305578f936c466b86b48ebb8f2ab54f.setContent(html_060486f37232407c8cf9c239bc5b668e);
+        
+
+        circle_d07f0435e1054727a02812723553dbd7.bindPopup(popup_d305578f936c466b86b48ebb8f2ab54f)
+        ;
+
+        
+    
+    
+            var circle_f2470dddbefd4e869bb75ecbe3740c0d = L.circle(
+                [50.9295798, 13.4585052],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10618.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_aa4a4a14c98a433fbd080a11861ab107 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5a4839316ffb416289ce8c9e8246c93a = $(`<div id="html_5a4839316ffb416289ce8c9e8246c93a" style="width: 100.0%; height: 100.0%;">5309 Fälle insgesamt, 4872 gesunde Fälle und 211 Todesfälle in Sachsen</div>`)[0];
+            popup_aa4a4a14c98a433fbd080a11861ab107.setContent(html_5a4839316ffb416289ce8c9e8246c93a);
+        
+
+        circle_f2470dddbefd4e869bb75ecbe3740c0d.bindPopup(popup_aa4a4a14c98a433fbd080a11861ab107)
+        ;
+
+        
+    
+    
+            var circle_d17e28089695472ba3530b81cbaa4968 = L.circle(
+                [50.9295798, 13.4585052],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9744.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_9eb95f5797d64443af9f56ff240ec134 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_b07b98e596194a559af32b6373f48291 = $(`<div id="html_b07b98e596194a559af32b6373f48291" style="width: 100.0%; height: 100.0%;">5309 Fälle insgesamt, 4872 gesunde Fälle und 211 Todesfälle in Sachsen</div>`)[0];
+            popup_9eb95f5797d64443af9f56ff240ec134.setContent(html_b07b98e596194a559af32b6373f48291);
+        
+
+        circle_d17e28089695472ba3530b81cbaa4968.bindPopup(popup_9eb95f5797d64443af9f56ff240ec134)
+        ;
+
+        
+    
+    
+            var circle_7dd0a9ba8ff749babc3df0fd8a0cc4c3 = L.circle(
+                [50.9295798, 13.4585052],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 422.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_9f33e06ad54b41bfb37afe2d6e1ea6b8 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5de4e8895ff94a66a2c90a235a5d2ad2 = $(`<div id="html_5de4e8895ff94a66a2c90a235a5d2ad2" style="width: 100.0%; height: 100.0%;">5309 Fälle insgesamt, 4872 gesunde Fälle und 211 Todesfälle in Sachsen</div>`)[0];
+            popup_9f33e06ad54b41bfb37afe2d6e1ea6b8.setContent(html_5de4e8895ff94a66a2c90a235a5d2ad2);
+        
+
+        circle_7dd0a9ba8ff749babc3df0fd8a0cc4c3.bindPopup(popup_9f33e06ad54b41bfb37afe2d6e1ea6b8)
+        ;
+
+        
+    
+    
+            var circle_8d855665096a458fbf7e25e1510e2e83 = L.circle(
+                [51.908526, 11.4939134],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3414.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_b7d6169c58c842658ea5399f15af69ad = L.popup({"maxWidth": "100%"});
+
+        
+            var html_fa64b21dae404e6b9a429a7b5e6161d6 = $(`<div id="html_fa64b21dae404e6b9a429a7b5e6161d6" style="width: 100.0%; height: 100.0%;">1707 Fälle insgesamt, 1606 gesunde Fälle und 55 Todesfälle in Sachsen-Anhalt</div>`)[0];
+            popup_b7d6169c58c842658ea5399f15af69ad.setContent(html_fa64b21dae404e6b9a429a7b5e6161d6);
+        
+
+        circle_8d855665096a458fbf7e25e1510e2e83.bindPopup(popup_b7d6169c58c842658ea5399f15af69ad)
+        ;
+
+        
+    
+    
+            var circle_a901985c7f2d4f19809fe80644d10ddc = L.circle(
+                [51.908526, 11.4939134],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3212.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_e4f61be96f9b4010bbf5c7695e52b7d4 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_f214e85415944655a11607fa77d0fcab = $(`<div id="html_f214e85415944655a11607fa77d0fcab" style="width: 100.0%; height: 100.0%;">1707 Fälle insgesamt, 1606 gesunde Fälle und 55 Todesfälle in Sachsen-Anhalt</div>`)[0];
+            popup_e4f61be96f9b4010bbf5c7695e52b7d4.setContent(html_f214e85415944655a11607fa77d0fcab);
+        
+
+        circle_a901985c7f2d4f19809fe80644d10ddc.bindPopup(popup_e4f61be96f9b4010bbf5c7695e52b7d4)
+        ;
+
+        
+    
+    
+            var circle_ec7e548c52394017b96274cc74f18729 = L.circle(
+                [51.908526, 11.4939134],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 110.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_f91b5a0a4540454d8064e636a8ee2d03 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_5dee74e6f6604bd9ab1c83f64c7fac4a = $(`<div id="html_5dee74e6f6604bd9ab1c83f64c7fac4a" style="width: 100.0%; height: 100.0%;">1707 Fälle insgesamt, 1606 gesunde Fälle und 55 Todesfälle in Sachsen-Anhalt</div>`)[0];
+            popup_f91b5a0a4540454d8064e636a8ee2d03.setContent(html_5dee74e6f6604bd9ab1c83f64c7fac4a);
+        
+
+        circle_ec7e548c52394017b96274cc74f18729.bindPopup(popup_f91b5a0a4540454d8064e636a8ee2d03)
+        ;
+
+        
+    
+    
+            var circle_2019681cdcb348aa9c84f774d543869d = L.circle(
+                [54.1853998, 9.8220089],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6206.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_826d91e5cdc54dfc82cede381f6cfd11 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_1329c2c1c8574412822b2c0549a03123 = $(`<div id="html_1329c2c1c8574412822b2c0549a03123" style="width: 100.0%; height: 100.0%;">3103 Fälle insgesamt, 2864 gesunde Fälle und 145 Todesfälle in Schleswig-Holstein</div>`)[0];
+            popup_826d91e5cdc54dfc82cede381f6cfd11.setContent(html_1329c2c1c8574412822b2c0549a03123);
+        
+
+        circle_2019681cdcb348aa9c84f774d543869d.bindPopup(popup_826d91e5cdc54dfc82cede381f6cfd11)
+        ;
+
+        
+    
+    
+            var circle_9a1c1171c73f46f2822d8ba47466abd7 = L.circle(
+                [54.1853998, 9.8220089],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5728.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_2f5c2df9487542acb0b2d922744663bb = L.popup({"maxWidth": "100%"});
+
+        
+            var html_efde178c7e3c4a3ca0d213808fd102ab = $(`<div id="html_efde178c7e3c4a3ca0d213808fd102ab" style="width: 100.0%; height: 100.0%;">3103 Fälle insgesamt, 2864 gesunde Fälle und 145 Todesfälle in Schleswig-Holstein</div>`)[0];
+            popup_2f5c2df9487542acb0b2d922744663bb.setContent(html_efde178c7e3c4a3ca0d213808fd102ab);
+        
+
+        circle_9a1c1171c73f46f2822d8ba47466abd7.bindPopup(popup_2f5c2df9487542acb0b2d922744663bb)
+        ;
+
+        
+    
+    
+            var circle_581bfa034979461ebacc27d2fc57238d = L.circle(
+                [54.1853998, 9.8220089],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 290.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_5a7cf6e4003047048c265424e4284190 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_d1b06ed9f3904192b3851dce5b066f1c = $(`<div id="html_d1b06ed9f3904192b3851dce5b066f1c" style="width: 100.0%; height: 100.0%;">3103 Fälle insgesamt, 2864 gesunde Fälle und 145 Todesfälle in Schleswig-Holstein</div>`)[0];
+            popup_5a7cf6e4003047048c265424e4284190.setContent(html_d1b06ed9f3904192b3851dce5b066f1c);
+        
+
+        circle_581bfa034979461ebacc27d2fc57238d.bindPopup(popup_5a7cf6e4003047048c265424e4284190)
+        ;
+
+        
+    
+    
+            var circle_fe25ea6f8413421db8411e3c4f86fedb = L.circle(
+                [50.7333163, 11.0747905],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6034.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_0585cef35ee64f5bb9a13373e7045e64 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_0ddca8a074ff4a1eb162d0f02aed5c18 = $(`<div id="html_0ddca8a074ff4a1eb162d0f02aed5c18" style="width: 100.0%; height: 100.0%;">3017 Fälle insgesamt, 2603 gesunde Fälle und 163 Todesfälle in Thüringen</div>`)[0];
+            popup_0585cef35ee64f5bb9a13373e7045e64.setContent(html_0ddca8a074ff4a1eb162d0f02aed5c18);
+        
+
+        circle_fe25ea6f8413421db8411e3c4f86fedb.bindPopup(popup_0585cef35ee64f5bb9a13373e7045e64)
+        ;
+
+        
+    
+    
+            var circle_2f0ac159182f49b58c1b1755dccc67f5 = L.circle(
+                [50.7333163, 11.0747905],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5206.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_cadea889552746efa2a98f7239c791a3 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_973b29a3ebe6470dba33836267f9c2e9 = $(`<div id="html_973b29a3ebe6470dba33836267f9c2e9" style="width: 100.0%; height: 100.0%;">3017 Fälle insgesamt, 2603 gesunde Fälle und 163 Todesfälle in Thüringen</div>`)[0];
+            popup_cadea889552746efa2a98f7239c791a3.setContent(html_973b29a3ebe6470dba33836267f9c2e9);
+        
+
+        circle_2f0ac159182f49b58c1b1755dccc67f5.bindPopup(popup_cadea889552746efa2a98f7239c791a3)
+        ;
+
+        
+    
+    
+            var circle_b6881aba55de4f918daadcde1e06df44 = L.circle(
+                [50.7333163, 11.0747905],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 326.0, "stroke": true, "weight": 3}
+            ).addTo(map_d363235747444cabb4d9e78419b50abc);
+        
+    
+        var popup_4cf81b1afbf841c5af4eb28f669e8897 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_17e04c92f477463190f8a564649b55e1 = $(`<div id="html_17e04c92f477463190f8a564649b55e1" style="width: 100.0%; height: 100.0%;">3017 Fälle insgesamt, 2603 gesunde Fälle und 163 Todesfälle in Thüringen</div>`)[0];
+            popup_4cf81b1afbf841c5af4eb28f669e8897.setContent(html_17e04c92f477463190f8a564649b55e1);
+        
+
+        circle_b6881aba55de4f918daadcde1e06df44.bindPopup(popup_4cf81b1afbf841c5af4eb28f669e8897)
+        ;
+
+        
+    
+</script>

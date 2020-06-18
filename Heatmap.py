@@ -8,6 +8,7 @@ from geopy.geocoders import Nominatim
 geolocator = Nominatim(timeout = None)
 
 def generate_circle(covid_data, file_name = "Circlemap"):
+    print('Generate Circlemap...')
     data = covid_data.groupby(['Bundesland']).sum()
 
     #Karte mit Fokus auf Deutschland 
@@ -49,8 +50,10 @@ def generate_circle(covid_data, file_name = "Circlemap"):
 
     #Speichern in HTML
     folium_map.save("Result\\" + file_name + ".html")
+    print('Circlemap created.')
 
 def generate_heatmap(covid_data, file_name = "Heatmap"):
+    print('Generate Heatmap...')
     covid_grouped = covid_data.groupby(['Landkreis']).sum()
     
     heatmap_data = []
@@ -68,8 +71,10 @@ def generate_heatmap(covid_data, file_name = "Heatmap"):
 
     Heatmap(heatmap_data).add_to(hmap)
     hmap.save("Result\\" + file_name + ".html")
+    print('Heatmap created.')
     
 def generate_chart(covid_data):
+    print('Creating Heatmapchart...')
     data = covid_data.groupby(['Altersgruppe']).sum()
     
     array = []
@@ -101,3 +106,4 @@ def generate_chart(covid_data):
     
     fig.tight_layout()
     plt.show()
+    print('Heatmapchart created.')
