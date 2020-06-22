@@ -1,9 +1,6 @@
-
-
 import DataReader as reader
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from pandas import DataFrame
 covid_data = reader.get_covid_data()
 
 
