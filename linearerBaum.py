@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 22 15:09:38 2020
 
-@author: AhrensL
-"""
 import numpy as np
 import datetime as dt
 import pandas as pd
