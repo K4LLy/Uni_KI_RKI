@@ -49,6 +49,4 @@ maskenpflicht = 1 #ja
 kontatbeschraenkung = 1 #ja
 Kw_bundesland.predict_Data(covid_data, kalenderwoche, pred_col, grossveranstaltung) 
 kw_bundesland_maßnahmen.predict_Data(covid_data, kalenderwoche, pred_col, grossveranstaltung, bundesland,maskenpflicht,kontatbeschraenkung)
-
-
 multi_label.predict_multi_label(kalenderwoche, pred_col, covid_data,grossveranstaltung, maskenpflicht,kontatbeschraenkung)

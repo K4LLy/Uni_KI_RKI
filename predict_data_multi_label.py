@@ -96,7 +96,7 @@ def print_prediction(column_to_predict, kalenderwoche, labels_pred):
    
     #zum Plotten der Loss-Kurve:
     #pd.DataFrame(mlp_regr.loss_curve_).plot()
-def predict_data(covid_data, column_to_predict, kalenderwoche):
+def predict_data(covid_data, column_to_predict, kalenderwoche, grossveranstaltung,maskenpflicht,kontaktbeschraenkung):
     #features sind für jedes Bundesland gleich, dürfen aber nur die Größe der Label haben
     features_dataframe = covid_data.loc[covid_data['Bundesland'] == 'Bayern']
     features_dataframe = features_dataframe.filter(items = ['Kalenderwoche', 'Großveranstaltung', 'MaskenpflichtJN', 'KontaktbeschraenkungJN'])
@@ -114,7 +114,7 @@ def predict_data(covid_data, column_to_predict, kalenderwoche):
     
     #mlp_labels_predict = mlp_regr.predict(X = feature_to_predict)
     test_prediction = mlp_regr.predict(X= features)
-    feature_to_predict = np.array([[kalenderwoche,1,1,1]])
+    feature_to_predict = np.array([[kalenderwoche,grossveranstaltung,maskenpflicht,kontaktbeschraenkung]])
     labels_pred = mlp_regr.predict(X= feature_to_predict)
     print_prediction(column_to_predict, kalenderwoche, labels_pred)
     
@@ -137,9 +137,10 @@ def predict_data(covid_data, column_to_predict, kalenderwoche):
     u.save_model(mlp_regr, 'predict_data_multi_label_hiddenlayersize_'+str(my_hiddenlayer_size))
     plt8.savefig("Result\\" + 'predict_data_multi_label_neuronales_netz_niedersachsen_' + ".png")
     
-def predict_multi_label(kalenderwoche, column_to_predict,covid_data):
+def predict_multi_label(kalenderwoche, column_to_predict,covid_data, grossveranstaltung,maskenpflicht,kontaktbeschraenkung):
+    print("Anhand eines Features wird ein Label mit den Fällen für jedes Bundesland vorausgesagt...")
     dataframe = prepare_data(covid_data)
-    predict_data(dataframe, column_to_predict, kalenderwoche)
+    predict_data(dataframe, column_to_predict, kalenderwoche,grossveranstaltung,maskenpflicht,kontaktbeschraenkung)
 
 
    
