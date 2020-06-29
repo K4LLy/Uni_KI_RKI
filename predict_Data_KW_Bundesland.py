@@ -1,9 +1,7 @@
 
 #import
-import DataReader as reader
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -180,11 +178,13 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN):
     plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
     plt.ylabel('Anzahl der Fälle')
     plt.xlabel('Kalenderwoche')
-    plt.title('Tatsächliche und vorausgesagte Fälle neuronales Netz (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    plt.title('Tatsächliche und vorausgesagte Fälle neuronales Netz von allen Bundesländern (Blau: Tatsächlich, Rot: Vorausgesagt)')
     plt.show()
+    plt.savefig("Result\\" + 'predict_data_KW_BundesLand_neuronales_Netz_alle_bundesländer'+ ".png")
     
    
 def predict_Data(covid_data, kalenderwoche, data_to_predict, massnahmenJN):
+    print('Vorhersage von '+data_to_predict+ 'für alle Bundesländer mit der linearen Regression, dem Baum und dem neuronalen Netzwerk.')
     dataframe = prepareData(covid_data)
     predictData(dataframe, kalenderwoche, data_to_predict, massnahmenJN)
     

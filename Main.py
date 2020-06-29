@@ -6,6 +6,9 @@ import NeuralNetwork as nn
 import Util as u
 import predict_Data_KW_Bundesland as Kw_bundesland
 import predict_data_KW_Bundesland_Maßnahmen as kw_bundesland_maßnahmen
+import ClusteringKMean as cluster_k_mean
+import ClusteringKMeanFallAlter as cluster_fall_alter
+import predict_data_multi_label as multi_label
 
 covid_data = reader.get_covid_data()
 
@@ -16,6 +19,9 @@ covid_data = reader.get_covid_data()
 #hm.generate_chart(covid_data)
 #hm.generate_circle(covid_data)
 #hm.generate_heatmap(covid_data)
+#cluster_k_mean.cluster_kmean(covid_data)
+#cluster_fall_alter.generate_cluster_fall_alter(covid_data)
+
 
 test_name = 'P_Test1'
 pred_col = 'AnzahlFall'
@@ -38,8 +44,11 @@ lr.print_info(linear_regression, X_test, y_test, y_pred)
 
 bundesland = 'Niedersachsen'
 kalenderwoche = 23
-massnahmenJN = 1 #ja
+grossveranstaltung = 1 #ja
 maskenpflicht = 1 #ja
 kontatbeschraenkung = 1 #ja
-Kw_bundesland.predict_Data(covid_data, kalenderwoche, pred_col, massnahmenJN) 
-kw_bundesland_maßnahmen.predict_Data(covid_data, kalenderwoche, pred_col, massnahmenJN, bundesland,maskenpflicht,kontatbeschraenkung)
+Kw_bundesland.predict_Data(covid_data, kalenderwoche, pred_col, grossveranstaltung) 
+kw_bundesland_maßnahmen.predict_Data(covid_data, kalenderwoche, pred_col, grossveranstaltung, bundesland,maskenpflicht,kontatbeschraenkung)
+
+
+multi_label.predict_multi_label(kalenderwoche, pred_col, covid_data,grossveranstaltung, maskenpflicht,kontatbeschraenkung)

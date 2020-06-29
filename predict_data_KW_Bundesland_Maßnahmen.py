@@ -1,13 +1,10 @@
 
 
 #import
-import DataReader as reader
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as tree_plt
 import matplotlib.pyplot as lin_plt
-from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
@@ -232,7 +229,7 @@ def prepareData(covid_data, bundesland_to_filter):
         
     
         
-    covid_data.loc[:,('MassnahmenJN')] = massnahmen
+    covid_data.loc[:,('GroßveranstaltungJN')] = massnahmen
     covid_data.loc[:,('MaskenpflichtJN')] = maskenpflicht
     covid_data.loc[:,('KontaktbeschraenkungJN')] = kontaktbeschraenkung #Treffen von bis zu 10 Personen gilt hier als keine Kontaktbeschränkung
     covid_data.loc[:,('Kalenderwoche')] = kalenderwochen_nr
@@ -337,6 +334,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     u.save_model(mlp_regr, 'predict_data_KW_BundesLand_Maßnahmen_hiddenlayersize_'+str(my_hiddenlayer_size))
    
 def predict_Data(covid_data, kalenderwoche, data_to_predict, massnahmenJN, bundesland,maskeJN, kontaktJN):
+    print('Vorhersage von '+data_to_predict+ 'für das Bundesland '+ bundesland + 'mit der linearen Regression, dem Baum und dem neuronalen Netzwerk.')
     dataframe = prepareData(covid_data, bundesland)
     predictData(dataframe, kalenderwoche, data_to_predict, massnahmenJN, bundesland,maskeJN, kontaktJN)
 
