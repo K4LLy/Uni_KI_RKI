@@ -52,7 +52,7 @@ def prepareData(covid_data):
 
 
     #ab kalenderwoche 12 werden Maßnahmen getroffen
-#r-0-Faktor?
+
     r_null_faktor = []
     massnahmen = []
     kalenderwochen_nr = []
@@ -176,15 +176,15 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN):
     kalenderwoche_to_plot = features_test[:,0]
     plt.scatter(kalenderwoche_to_plot, labels_test, color= 'blue')
     plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
-    plt.ylabel('Anzahl der Fälle')
+    plt.ylabel(str_to_predict)
     plt.xlabel('Kalenderwoche')
-    plt.title('Tatsächliche und vorausgesagte Fälle neuronales Netz von allen Bundesländern (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' neuronales Netz \n von allen Bundesländern (Blau: Tatsächlich, Rot: Vorausgesagt)')
+   
+    plt.savefig("Result\\" + 'onehot_Bundesland_knn_linreg_linBaum_neuronales_Netz_alle_bundesländer'+ ".png")
     plt.show()
-    plt.savefig("Result\\" + 'predict_data_KW_BundesLand_neuronales_Netz_alle_bundesländer'+ ".png")
-    
    
 def predict_Data(covid_data, kalenderwoche, data_to_predict, massnahmenJN):
-    print('Vorhersage von '+data_to_predict+ 'für alle Bundesländer mit der linearen Regression, dem Baum und dem neuronalen Netzwerk.')
+    print('Vorhersage von '+data_to_predict+ 'für alle Bundesländer mit der linearen Regression, dem Baum und dem neuronalen Netzwerk anhand von Onehot-coding der Bundesländer.')
     dataframe = prepareData(covid_data)
     predictData(dataframe, kalenderwoche, data_to_predict, massnahmenJN)
     

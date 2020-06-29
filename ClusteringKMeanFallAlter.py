@@ -49,6 +49,7 @@ def generate_cluster_fall_alter(covid_data):
     plt.xlabel('Altersgruppe Durschnittsalter')
     plt.ylabel('Fälle')
 
-    plt.show()
     
     plt.savefig("Result\\" + 'clustering_k_mean_fall_alter' + ".png")
+    plt.show()
+    

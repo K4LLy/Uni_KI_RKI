@@ -13,5 +13,6 @@ def cluster_kmean(covid_data):
     plt.xlabel('Fälle')
     plt.ylabel('davon Todesfälle')
 
-    plt.show()
+    
     plt.savefig("Result\\" + 'clustering_k_mean_faelle_todesfaelle_bundesland_altersgruppe' + ".png")
+    plt.show()

@@ -16,7 +16,7 @@ import Util as u
 
 
 def prepareData(covid_data, bundesland_to_filter):
-    
+    print("Prepare Data...")
     covid_data = covid_data.groupby(['Kalenderwoche', 'Bundesland']).sum()
     kalenderwoche = np.array(covid_data.index.get_level_values(0))
     bundesland = np.array(covid_data.index.get_level_values(1))
@@ -235,6 +235,7 @@ def prepareData(covid_data, bundesland_to_filter):
     covid_data.loc[:,('Kalenderwoche')] = kalenderwochen_nr
     covid_data.loc[:,('R_Null_Faktor')] = r_null_faktor
     covid_data = covid_data.loc[covid_data[bundesland_to_filter] == 1] #Filter nach gefragtem Bundesland
+    print("Data prepared")
     return covid_data
 
 def printData(labels_pred, str_to_predict, regression, kalenderwoche, bundesland):
@@ -245,9 +246,9 @@ def printData(labels_pred, str_to_predict, regression, kalenderwoche, bundesland
 def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bundesland,maskeJN, kontaktJN):
    
     #label: anzahl fall 
-    dataframe_der_features = covid_data.filter(items= ['Kalenderwoche', 'MassnahmenJN', 'MaskenpflichtJN', 'KontaktbeschraenkungJN' ])
+    dataframe_der_features = covid_data.filter(items= ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN', 'KontaktbeschraenkungJN' ])
     features = np.array(dataframe_der_features)
-    #features = preprocessing.scale(features)
+ 
     dataframe_der_labels = covid_data.filter(items = [column_to_predict])
     str_to_predict = ''
     if column_to_predict == 'AnzahlFall':
@@ -267,7 +268,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     linreg.fit(features_train, labels_train)
 
     
-    #feature zusammenbauen: Anzahl Fall in der KW mit/ohne Massnahmen
+    #feature zusammenbauen:  KW mit/ohne Massnahmen
 
     feature_to_predict = np.array([[kalenderwoche, massnahmenJN, maskeJN, kontaktJN]])
     
@@ -284,11 +285,12 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     kalenderwoche_to_plot = features[:,0]
     lin_plt.scatter(kalenderwoche_to_plot, labels, color= 'blue')
     lin_plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
-    lin_plt.ylabel('Anzahl der Fälle')
+    lin_plt.ylabel(str_to_predict)
     lin_plt.xlabel('Kalenderwoche')
-    lin_plt.title('Tatsächliche und vorausgesagte Fälle lineare Regression ' +bundesland + '(Blau: Tatsächlich, Rot: Vorausgesagt)')
+    lin_plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' lineare Regression \n mit einem Bundesland für ' +bundesland + '(Blau: Tatsächlich, Rot: Vorausgesagt)')
+    
+    lin_plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_lineare_Regression_' +bundesland+ '_'+str_to_predict+".png")
     lin_plt.show()
-    lin_plt.savefig("Result\\" + 'predict_data_KW_BundesLand_Maßnahmen_lineare_Regression_' +bundesland+ ".png")
     #Baum
     reg_tree = tree.DecisionTreeRegressor()
     reg_tree = reg_tree.fit(features_train, labels_train)
@@ -304,12 +306,12 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     kalenderwoche_to_plot = features_test[:,0]
     tree_plt.scatter(kalenderwoche_to_plot, labels_test, color= 'blue')
     tree_plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
-    tree_plt.ylabel('Anzahl der Fälle')
+    tree_plt.ylabel(str_to_predict)
     tree_plt.xlabel('Kalenderwoche')
-    tree_plt.title('Tatsächliche und vorausgesagte Fälle Baum ' +bundesland + '(Blau: Tatsächlich, Rot: Vorausgesagt)')
+    tree_plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' Baum \n mit einem Bundesland für ' +bundesland + '(Blau: Tatsächlich, Rot: Vorausgesagt)')
+    
+    tree_plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_Baum_' +bundesland+ '_'+str_to_predict+".png")
     tree_plt.show()
-    tree_plt.savefig("Result\\" + 'predict_data_KW_BundesLand_Maßnahmen_Baum_' +bundesland+ ".png")
-   
     #neuronales Netz
     
     my_hiddenlayer_size = (80,)
@@ -326,12 +328,13 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     kalenderwoche_to_plot = features[:,0]
     plt.scatter(kalenderwoche_to_plot, labels, color= 'blue')
     plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
-    plt.ylabel('Anzahl der Fälle')
+    plt.ylabel(str_to_predict)
     plt.xlabel('Kalenderwoche')
-    plt.title('Tatsächliche und vorausgesagte Fälle neuronales Netz ' +bundesland + '(Blau: Tatsächlich, Rot: Vorausgesagt)')
+    plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' neuronales Netz \n mit einem Bundesland für ' +bundesland + ' (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    
+    plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_neuronales_Netz_' +bundesland+ '_'+str_to_predict+".png")
     plt.show()
-    plt.savefig("Result\\" + 'predict_data_KW_BundesLand_Maßnahmen_neuronales_Netz_' +bundesland+ ".png")
-    u.save_model(mlp_regr, 'predict_data_KW_BundesLand_Maßnahmen_hiddenlayersize_'+str(my_hiddenlayer_size))
+    u.save_model(mlp_regr, 'Bundesland_knn_linReg_linBaum_hiddenlayersize_'+str(my_hiddenlayer_size)+'_'+str_to_predict)
    
 def predict_Data(covid_data, kalenderwoche, data_to_predict, massnahmenJN, bundesland,maskeJN, kontaktJN):
     print('Vorhersage von '+data_to_predict+ 'für das Bundesland '+ bundesland + 'mit der linearen Regression, dem Baum und dem neuronalen Netzwerk.')
@@ -339,6 +342,5 @@ def predict_Data(covid_data, kalenderwoche, data_to_predict, massnahmenJN, bunde
     predictData(dataframe, kalenderwoche, data_to_predict, massnahmenJN, bundesland,maskeJN, kontaktJN)
 
     
-
 
 

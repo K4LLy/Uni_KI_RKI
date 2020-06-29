@@ -15,18 +15,13 @@ import Util as u
 from sklearn.neural_network import MLPRegressor
 
 def prepare_data(covid_data):
-    
+    print("Prepare data...")
     covid_data = covid_data.groupby(['Kalenderwoche', 'Bundesland']).sum()
     kalenderwoche = np.array(covid_data.index.get_level_values(0))
     bundesland = np.array(covid_data.index.get_level_values(1))
     covid_data.loc[:,('KW')] = kalenderwoche
     covid_data.loc[:,('Bundesland')] = bundesland
-    
-    
-    
-    
-    
-    
+
     
     #ab kalenderwoche 12 werden Maßnahmen getroffen
     #r-0-Faktor?
@@ -59,10 +54,7 @@ def prepare_data(covid_data):
             kontaktbeschraenkung.append(1)
         else:
             kontaktbeschraenkung.append(0)
-       
-        
-    
-        
+   
     covid_data.loc[:,('Großveranstaltung')] = massnahmen
     covid_data.loc[:,('MaskenpflichtJN')] = maskenpflicht
     covid_data.loc[:,('KontaktbeschraenkungJN')] = kontaktbeschraenkung #Treffen von bis zu 10 Personen gilt hier als keine Kontaktbeschränkung
@@ -71,10 +63,11 @@ def prepare_data(covid_data):
     covid_data.loc[:,('R_Null_Faktor')] = r_null_faktor
     covid_data = covid_data.loc[covid_data['Kalenderwoche'] >= 10  ] 
     covid_data = covid_data.loc[covid_data['Kalenderwoche'] <22  ] 
+    print("Data prepared")
     return covid_data
 
-def print_prediction(column_to_predict, kalenderwoche, labels_pred):
-    str_to_predict = column_to_predict +' in Kalenderwoche '+str(kalenderwoche)
+def print_prediction(column_to_predict, kalenderwoche, labels_pred, str_to_predict):
+    str_to_predict = str_to_predict +' in Kalenderwoche '+str(kalenderwoche)
     print(
     str_to_predict + ' in Baden-Wüttemberg: '       + str(labels_pred[0][0])+'\n' +
     str_to_predict + ' in Bayern: '                 + str(labels_pred[0][1])+'\n' +
@@ -97,6 +90,13 @@ def print_prediction(column_to_predict, kalenderwoche, labels_pred):
     #zum Plotten der Loss-Kurve:
     #pd.DataFrame(mlp_regr.loss_curve_).plot()
 def predict_data(covid_data, column_to_predict, kalenderwoche, grossveranstaltung,maskenpflicht,kontaktbeschraenkung):
+    str_to_predict = ''
+    if column_to_predict == 'AnzahlFall':
+       str_to_predict = 'Anzahl der Fälle' 
+    elif column_to_predict =='AnzahlGenesen':
+        str_to_predict = 'Gesunde Fälle'
+    elif column_to_predict =='AnzahlTodesfall':
+        str_to_predict = 'Tote Fälle'
     #features sind für jedes Bundesland gleich, dürfen aber nur die Größe der Label haben
     features_dataframe = covid_data.loc[covid_data['Bundesland'] == 'Bayern']
     features_dataframe = features_dataframe.filter(items = ['Kalenderwoche', 'Großveranstaltung', 'MaskenpflichtJN', 'KontaktbeschraenkungJN'])
@@ -116,7 +116,7 @@ def predict_data(covid_data, column_to_predict, kalenderwoche, grossveranstaltun
     test_prediction = mlp_regr.predict(X= features)
     feature_to_predict = np.array([[kalenderwoche,grossveranstaltung,maskenpflicht,kontaktbeschraenkung]])
     labels_pred = mlp_regr.predict(X= feature_to_predict)
-    print_prediction(column_to_predict, kalenderwoche, labels_pred)
+    print_prediction(column_to_predict, kalenderwoche, labels_pred, str_to_predict)
     
     print('Metrik neuronales Netz: ')
     print('    Score: '+ str(mlp_regr.score(features_test, labels_test)))
@@ -128,17 +128,18 @@ def predict_data(covid_data, column_to_predict, kalenderwoche, grossveranstaltun
     plt8.scatter(kalenderwoche_to_plot, test_prediction[:,8], color = 'red')
     
     
-    plt8.ylabel('Anzahl der Fälle')
+    plt8.ylabel(str_to_predict)
     plt8.xlabel('Kalenderwoche')
-    plt8.title('Tatsächliche und vorausgesagte '+column_to_predict+' neuronales Netz Niedersachsen (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    plt8.title('Tatsächliche und vorausgesagte '+str_to_predict+' neuronales Netz \n mit Output von allen Fällen für Niedersachsen (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    
+    
+    
+    u.save_model(mlp_regr, 'knn_bundeslaender_hiddenlayersize_'+str(my_hiddenlayer_size))
+    plt8.savefig("Result\\" + 'knn_bundeslaender_neuronales_netz_niedersachsen_'+str_to_predict + ".png")
     plt8.show()
     
-    
-    u.save_model(mlp_regr, 'predict_data_multi_label_hiddenlayersize_'+str(my_hiddenlayer_size))
-    plt8.savefig("Result\\" + 'predict_data_multi_label_neuronales_netz_niedersachsen_' + ".png")
-    
 def predict_multi_label(kalenderwoche, column_to_predict,covid_data, grossveranstaltung,maskenpflicht,kontaktbeschraenkung):
-    print("Anhand eines Features wird ein Label mit den Fällen für jedes Bundesland vorausgesagt...")
+    print("Anhand eines Features wird ein Label mit den Fällen für jedes Bundesland vorausgesagt")
     dataframe = prepare_data(covid_data)
     predict_data(dataframe, column_to_predict, kalenderwoche,grossveranstaltung,maskenpflicht,kontaktbeschraenkung)
 
