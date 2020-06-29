@@ -4,6 +4,8 @@ import Charts as ch
 import LinReg as lr
 import NeuralNetwork as nn
 import Util as u
+import predict_Data_KW_Bundesland as Kw_bundesland
+import predict_data_KW_Bundesland_Maßnahmen as kw_bundesland_maßnahmen
 
 covid_data = reader.get_covid_data()
 
@@ -32,3 +34,12 @@ lr.create(X_train, y_train, test_name, save_as_file = True)
 linear_regression = lr.load(test_name)
 y_pred = lr.predict(linear_regression, data, X_test, pred_col, shown_days)
 lr.print_info(linear_regression, X_test, y_test, y_pred)
+
+
+bundesland = 'Niedersachsen'
+kalenderwoche = 23
+massnahmenJN = 1 #ja
+maskenpflicht = 1 #ja
+kontatbeschraenkung = 1 #ja
+Kw_bundesland.predict_Data(covid_data, kalenderwoche, pred_col, massnahmenJN) 
+kw_bundesland_maßnahmen.predict_Data(covid_data, kalenderwoche, pred_col, massnahmenJN, bundesland,maskenpflicht,kontatbeschraenkung)

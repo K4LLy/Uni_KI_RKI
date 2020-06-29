@@ -188,5 +188,3 @@ def predict_Data(covid_data, kalenderwoche, data_to_predict, massnahmenJN):
     dataframe = prepareData(covid_data)
     predictData(dataframe, kalenderwoche, data_to_predict, massnahmenJN)
     
-covid_data = reader.get_covid_data()
-predict_Data(covid_data, 23, 'AnzahlFall', 1) #AnzahlFall, AnzahlTodesfall, AnzahlGenesen, R_Null_Faktor
