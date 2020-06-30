@@ -1,4 +1,4 @@
-
+#Erster Entwurf für die Vorraussage der Fälle/Todesfälle/Gesunde pro Bundesland anhand von Onehot-Encoding 
 #import
 import numpy as np
 import matplotlib.pyplot as plt
@@ -23,7 +23,7 @@ def prepareData(covid_data):
     values = np.array(covid_data.filter(items=['Bundesland']))
 
 
-# integer encode
+    # integer encode
     label_encoder = LabelEncoder()
     integer_encoded = label_encoder.fit_transform(values)
 
@@ -51,7 +51,7 @@ def prepareData(covid_data):
     covid_data.loc[:,('Thüringen')] = onehot_encoded[ :, 15]
 
 
-    #ab kalenderwoche 12 werden Maßnahmen getroffen
+    #ab kalenderwoche 12 werden Maßnahmen getroffen, hier sehr verallgemeinert
 
     r_null_faktor = []
     massnahmen = []
@@ -99,7 +99,7 @@ def printData(labels_pred, str_to_predict, regression, kalenderwoche):
     
 def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN):
     #labels aufbauen: Daten der nächsten Woche als Feature aufbauen
-    #features: Kalenderwoche, Bundesland (....), massnahmen
+    #features: Kalenderwoche, Bundesland (dargestellt als 0 und 1), massnahmen
     #label: anzahl fall 
     dataframe_der_features = covid_data.filter(items= ['Kalenderwoche', 'MassnahmenJN', 'Baden-Wüttemberg', 'Bayern', 'Berlin', 'Brandenburg','Bremen', 'Hamburg', 'Hessen', 'Mecklenburg-Vorpommern','Niedersachsen', 'Nordrhein-Westfalen', 'Rheinland-Pfalz', 'Saarland', 'Sachsen', 'Sachsen-Anhalt', 'Schleswig-Holstein', 'Thüringen' ])
     features = np.array(dataframe_der_features)
@@ -174,6 +174,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN):
     print('Score: '+ str(mlp_regr.score(features_test, labels_test)))
     print('Loss: '+str(mlp_regr.loss_))
     kalenderwoche_to_plot = features_test[:,0]
+    #Plotten der ganzen Vorraussagen und tatsächlichen Werte
     plt.scatter(kalenderwoche_to_plot, labels_test, color= 'blue')
     plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
     plt.ylabel(str_to_predict)

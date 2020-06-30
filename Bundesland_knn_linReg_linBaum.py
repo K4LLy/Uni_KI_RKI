@@ -27,7 +27,7 @@ def prepareData(covid_data, bundesland_to_filter):
     values = np.array(covid_data.filter(items=['Bundesland']))
 
 
-# integer encode
+    # integer encode
     label_encoder = LabelEncoder()
     integer_encoded = label_encoder.fit_transform(values)
 
@@ -55,8 +55,7 @@ def prepareData(covid_data, bundesland_to_filter):
     covid_data.loc[:,('Thüringen')] = onehot_encoded[ :, 15]
 
 
-    #ab kalenderwoche 12 werden Maßnahmen getroffen
-#r-0-Faktor?
+    #ab kalenderwoche 12 werden Maßnahmen getroffen: keine Großveranstaltungen mehr
     r_null_faktor = []
     massnahmen = []
     maskenpflicht = []
@@ -66,17 +65,19 @@ def prepareData(covid_data, bundesland_to_filter):
         kalenderwoche = row['KW']
         anzahlFall = row ['AnzahlFall']
         anzahlGenesen = row['AnzahlGenesen']
+        #r-null-Faktor in den Kalenderwochen
         if anzahlGenesen != 0:
             r_null = anzahlFall / anzahlGenesen
             r_null_faktor.append(r_null)
         else:
             r_null_faktor.append(anzahlFall)
         kalenderwoche_nr = int(kalenderwoche)
-        kalenderwochen_nr.append(kalenderwoche_nr)
+        kalenderwochen_nr.append(kalenderwoche_nr) # Kalenderwoche ist nur als String verfügbar --> Integer für Feature nötig
         if kalenderwoche_nr >= 12:
             massnahmen.append(1)
         else:
             massnahmen.append(0)
+            #Maskenpflicht und Kontaktbeschränkungen in den einzelnen Bundesländern
         if bundesland_to_filter == 'Baden-Württemberg':
             if kalenderwoche_nr >= 18:
                 maskenpflicht.append(1)
@@ -228,7 +229,7 @@ def prepareData(covid_data, bundesland_to_filter):
        
         
     
-        
+    #Daten ins Dataframe hinzufügen   
     covid_data.loc[:,('GroßveranstaltungJN')] = massnahmen
     covid_data.loc[:,('MaskenpflichtJN')] = maskenpflicht
     covid_data.loc[:,('KontaktbeschraenkungJN')] = kontaktbeschraenkung #Treffen von bis zu 10 Personen gilt hier als keine Kontaktbeschränkung
@@ -245,10 +246,10 @@ def printData(labels_pred, str_to_predict, regression, kalenderwoche, bundesland
     
 def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bundesland,maskeJN, kontaktJN):
    
-    #label: anzahl fall 
+    #Features
     dataframe_der_features = covid_data.filter(items= ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN', 'KontaktbeschraenkungJN' ])
     features = np.array(dataframe_der_features)
- 
+    #Label: AnzahlFall/AnzahlTodesfall/AnzahlGenesen/R-0_faktor im übergebenen Bundesland
     dataframe_der_labels = covid_data.filter(items = [column_to_predict])
     str_to_predict = ''
     if column_to_predict == 'AnzahlFall':
@@ -268,7 +269,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     linreg.fit(features_train, labels_train)
 
     
-    #feature zusammenbauen:  KW mit/ohne Massnahmen
+    #feature zusammenbauen, das von dem Model predicted werden soll:  KW mit/ohne Massnahmen
 
     feature_to_predict = np.array([[kalenderwoche, massnahmenJN, maskeJN, kontaktJN]])
     
@@ -282,6 +283,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     print('    MSE: ' + str(mean_squared_error(labels_test, label_fuer_fehler_linReg)))
     print('    MAE: ' + str(mean_absolute_error(labels_test, label_fuer_fehler_linReg)))
     
+    #Tatsächliche Werte und von der linearen Regression vorausgesagte Werte für das Bundesland von allen vorhandenen Werten
     kalenderwoche_to_plot = features[:,0]
     lin_plt.scatter(kalenderwoche_to_plot, labels, color= 'blue')
     lin_plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
@@ -291,6 +293,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     
     lin_plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_lineare_Regression_' +bundesland+ '_'+str_to_predict+".png")
     lin_plt.show()
+    
     #Baum
     reg_tree = tree.DecisionTreeRegressor()
     reg_tree = reg_tree.fit(features_train, labels_train)
@@ -303,6 +306,10 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     print('    Score: ' + str(reg_tree.score(features_test, labels_test))) 
     print('    MSE: ' + str(mean_squared_error(labels_test, label_fuer_fehler_tree)))
     print('    MAE: ' + str(mean_absolute_error(labels_test, label_fuer_fehler_tree)))
+    
+    
+    #Tatsächliche Werte und von dem Baum vorausgesagte Werte für das Bundesland von allen Testwerten. Die Trainingswerte würden auf jeden Fall zum 100%tigen Ergebnis führen!
+
     kalenderwoche_to_plot = features_test[:,0]
     tree_plt.scatter(kalenderwoche_to_plot, labels_test, color= 'blue')
     tree_plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
@@ -312,6 +319,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     
     tree_plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_Baum_' +bundesland+ '_'+str_to_predict+".png")
     tree_plt.show()
+    
     #neuronales Netz
     
     my_hiddenlayer_size = (80,)
@@ -323,8 +331,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     print('Metrik neuronales Netz: ')
     print('    Score: '+ str(mlp_regr.score(features_test, labels_test)))
     print('    Loss: '+str(mlp_regr.loss_))
-    #zum Plotten der Loss-Kurve:
-    #pd.DataFrame(mlp_regr.loss_curve_).plot()
+   
     kalenderwoche_to_plot = features[:,0]
     plt.scatter(kalenderwoche_to_plot, labels, color= 'blue')
     plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
