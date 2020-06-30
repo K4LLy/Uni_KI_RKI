@@ -31,7 +31,9 @@ def generate_pie_chart(covid_data):
         startangle=90, textprops = {'size':'9', 'color':'black'})
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     ax1.set_title("Erkrankungen nach Altersgruppen:")    
-    matplot.show()  
+    
+    matplot.savefig("Result\\" + 'pie_chart_erkrankungen_altersgruppe' + ".png")
+    matplot.show() 
     print('Piechart created.')
 
 #Balkendiagramm
@@ -55,9 +57,10 @@ def generate_bar_chart(covid_data):
         
     matplot.bar(header, counts, color = ['#0404B4', '#FE9A2E', 'red'])
     matplot.title("Erkrankungen nach Geschlecht")
-    matplot.show()
-    print('Barchart created.')    
     
+    print('Barchart created.')    
+    matplot.savefig("Result\\" + 'barchart_erkrankung_geschlecht' + ".png")
+    matplot.show()
 #Grafik nach Meldedatum
 def generate_graph(covid_data):   
     print('Creating Graph...') 
@@ -76,3 +79,4 @@ def generate_graph(covid_data):
     matplot.title("Anzahl Neuerkrankungen pro KW")    
     matplot.plot(dates_to_plot, count_dates_to_plot, color='green')
     print('Graph created.') 
+    matplot.savefig("Result\\" + 'graph_anzahl_neuerkrankungen_pro_kw' + ".png")
