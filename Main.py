@@ -25,7 +25,7 @@ covid_data = reader.get_covid_data()
 
 
 rt.regressionTree(covid_data)
-
+pred_col = 'AnzahlFall'
 #X, y, data = u.prepare_data(covid_data, pred_col, offset)
 #X_train, X_test, y_train, y_test = u.get_train_test(X, y, 0.2)
 
