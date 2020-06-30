@@ -121,7 +121,7 @@ def predict_data(covid_data, column_to_predict, kalenderwoche, grossveranstaltun
     plt8.scatter(kalenderwoche_to_plot, test_prediction[:,8], color = 'red')
     plt8.ylabel(str_to_predict)
     plt8.xlabel('Kalenderwoche')
-    plt8.title('Nneuronales Netz (mit Output von allen Fällen) \n für Niedersachsen (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    plt8.title('Neuronales Netz (mit Output von allen Fällen) \n für Niedersachsen (Blau: Tatsächlich, Rot: Vorausgesagt)')
       
     u.save_model(mlp_regr, 'knn_bundeslaender_hiddenlayersize_'+str(my_hiddenlayer_size))
     plt8.savefig("Result\\" + 'knn_bundeslaender_neuronales_netz_niedersachsen_'+str_to_predict + ".png")
