@@ -63,8 +63,9 @@ import matplotlib.pyplot as plt
 reg_tree = tree.DecisionTreeRegressor()
 fig, ax = plt.subplots(figsize=(27,15))
 tree.plot_tree(reg_tree.fit(features, labels), max_depth=10, fontsize=10)
-plt.show()
+
 fig.savefig("Result\\" + 'Linearer_Baum_Fälle_Geschlecht_Altersgruppe' + ".png")
+plt.show()
 
 featureToPredict = np.array([[1,0,0, 1,0,0,0,0,0,0],#Männlich und Altersgruppe
                              [1,0,0, 0,1,0,0,0,0,0],
