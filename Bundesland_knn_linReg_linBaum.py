@@ -289,7 +289,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     lin_plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
     lin_plt.ylabel(str_to_predict)
     lin_plt.xlabel('Kalenderwoche')
-    lin_plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' lineare Regression \n mit einem Bundesland für ' +bundesland + '(Blau: Tatsächlich, Rot: Vorausgesagt)')
+    lin_plt.title('Lineare Regression mit einem Bundesland für ' +bundesland + '\n(Blau: Tatsächlich, Rot: Vorausgesagt)')
     
     lin_plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_lineare_Regression_' +bundesland+ '_'+str_to_predict+".png")
     lin_plt.show()
@@ -315,7 +315,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     tree_plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
     tree_plt.ylabel(str_to_predict)
     tree_plt.xlabel('Kalenderwoche')
-    tree_plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' Baum \n mit einem Bundesland für ' +bundesland + '(Blau: Tatsächlich, Rot: Vorausgesagt)')
+    tree_plt.title('Baum mit einem Bundesland für ' +bundesland + '\n(Blau: Tatsächlich, Rot: Vorausgesagt)')
     
     tree_plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_Baum_' +bundesland+ '_'+str_to_predict+".png")
     tree_plt.show()
@@ -337,7 +337,7 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bund
     plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
     plt.ylabel(str_to_predict)
     plt.xlabel('Kalenderwoche')
-    plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' neuronales Netz \n mit einem Bundesland für ' +bundesland + ' (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    plt.title('Neuronales Netz mit einem Bundesland für ' +bundesland + ' \n (Blau: Tatsächlich, Rot: Vorausgesagt)')
     
     plt.savefig("Result\\" + 'Bundesland_knn_linReg_linBaum_neuronales_Netz_' +bundesland+ '_'+str_to_predict+".png")
     plt.show()

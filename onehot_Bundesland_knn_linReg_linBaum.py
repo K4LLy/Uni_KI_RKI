@@ -179,13 +179,13 @@ def predictData(covid_data, kalenderwoche, column_to_predict, massnahmenJN):
     plt.scatter(kalenderwoche_to_plot, test_prediction, color = 'red')
     plt.ylabel(str_to_predict)
     plt.xlabel('Kalenderwoche')
-    plt.title('Tatsächliche und vorausgesagte '+str_to_predict+' neuronales Netz \n von allen Bundesländern (Blau: Tatsächlich, Rot: Vorausgesagt)')
+    plt.title('Neuronales Netz (alle Bundesländer (one-hot)) \n (Blau: tats., Rot: voraus.)')
    
     plt.savefig("Result\\" + 'onehot_Bundesland_knn_linreg_linBaum_neuronales_Netz_alle_bundesländer'+ ".png")
     plt.show()
    
 def predict_Data(covid_data, kalenderwoche, data_to_predict, massnahmenJN):
-    print('Vorhersage von '+data_to_predict+ 'für alle Bundesländer mit der linearen Regression, dem Baum und dem neuronalen Netzwerk anhand von Onehot-coding der Bundesländer.')
+    print('Vorhersage von '+data_to_predict+ 'für alle Bundesländer mit der linearen Regression, dem Baum und dem neuronalen Netzwerk anhand von Onehotencoding der Bundesländer.')
     dataframe = prepareData(covid_data)
     predictData(dataframe, kalenderwoche, data_to_predict, massnahmenJN)
     
