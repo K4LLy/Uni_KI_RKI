@@ -1,4 +1,5 @@
 #Auslagern der 3 Dateien in eine und Refactoring: Pascal
+#Urheber der Inhalte der Funktionen: in der jeweiligen Funktion
 import folium
 import pandas as pd
 import numpy as np

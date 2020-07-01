@@ -1,5 +1,6 @@
 import matplotlib.pyplot as matplot
-#Einfügen der einzelnen Dateien in Funktionen: Pascal
+#Einfügen der einzelnen Dateien in Funktionen und Refactoring: Pascal
+#Urheber der Inhalte der Funktionen: in der jeweiligen Funktion
 #Kuchendiagramm
 def generate_pie_chart(covid_data):
     #Grundstruktur Lara Ahrens

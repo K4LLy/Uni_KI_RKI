@@ -18,6 +18,7 @@ from sklearn.neural_network import MLPRegressor
 import Util as u
 import Util_prepare_data_bundeslaender as preparing
 import Util_print_data_bundeslaender as printing
+import NeuralNetwork as nn
 
     
 def predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoche, column_to_predict, massnahmenJN, maskejn, kontaktjn):
@@ -33,12 +34,12 @@ def predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoche, column
     print('Vorhersage von '+str_to_predict+ 'für alle Bundesländer mit der linearen Regression, dem Baum und dem neuronalen Netzwerk anhand von Onehotencoding der Bundesländer.')
     covid_data = preparing.onehot_encode_data(covid_data)
     covid_data = preparing.prepare_data_for_every_bundesland(covid_data)
-    #labels aufbauen: Daten der nächsten Woche als Feature aufbauen
+
     #features: Kalenderwoche, Bundesland (dargestellt als 0 und 1), massnahmen
     #label: colum_to_predict (AnzahlFall/Todesfall/genesen)
     dataframe_der_features = covid_data.filter(items= ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN','KontaktbeschraenkungJN', 'Baden-Württemberg', 'Bayern', 'Berlin', 'Brandenburg','Bremen', 'Hamburg', 'Hessen', 'Mecklenburg-Vorpommern','Niedersachsen', 'Nordrhein-Westfalen', 'Rheinland-Pfalz', 'Saarland', 'Sachsen', 'Sachsen-Anhalt', 'Schleswig-Holstein', 'Thüringen' ])
     features = np.array(dataframe_der_features)
-    #features = preprocessing.scale(features)
+
     dataframe_der_labels = covid_data.filter(items = [column_to_predict])
     
     labels = np.array(dataframe_der_labels)
@@ -90,9 +91,9 @@ def predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoche, column
     print('    MAE: ' + str(mean_absolute_error(labels_test, label_fuer_fehler_tree)))
 
     #neuronales Netz
-    #Labelvorhersage wird größer bzw kleiner, wenn HiddenLayer größer / kleiner
-    #Activation sagt geringe Werte voraus
-    #plotten der Loss-Kurve funktioniert nur beim Default Optimizer
+    #Vorhersage wird größer bzw kleiner, wenn HiddenLayer größer / kleiner
+    #Activation adan verursacht einen linearen Verlauf
+    #plotten der Loss-Kurve funktioniert nur beim Default Optimizer adam
    
     mlp_regr = MLPRegressor(activation='relu',random_state=1, max_iter=500, solver ='lbfgs', learning_rate='invscaling').fit(features_train, labels_train)
     mlp_labels_predict = mlp_regr.predict(X = feature_to_predict)
@@ -254,6 +255,7 @@ def predict_data_with_knn_multi_label(covid_data, column_to_predict, kalenderwoc
     
     #Feature zusammebauen für die Vorraussage 
     feature_to_predict = np.array([[kalenderwoche,grossveranstaltung,maskenpflicht,kontaktbeschraenkung]])
+    #Vorhersage
     labels_pred = mlp_regr.predict(X= feature_to_predict)
     printing.print_prediction_multi_label(column_to_predict, kalenderwoche, labels_pred, str_to_predict)
     #je nachdem, wie der Test- und Trainingssatz gesplittet wird, ist der Score/Loss niedriger/höher
