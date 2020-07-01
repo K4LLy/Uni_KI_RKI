@@ -8,6 +8,7 @@ from geopy.geocoders import Nominatim
 geolocator = Nominatim(timeout = None)
 
 def generate_circle(covid_data, file_name = "Circlemap"):
+    #Lara Ahrens
     print('Generate Circlemap...')
     data = covid_data.groupby(['Bundesland']).sum()
 
@@ -53,6 +54,7 @@ def generate_circle(covid_data, file_name = "Circlemap"):
     print('Circlemap created.')
 
 def generate_heatmap(covid_data, file_name = "Heatmap"):
+    #Grundstruktur: Lara Ahrens und Gerriet Schmidt
     print('Generate Heatmap...')
     covid_grouped = covid_data.groupby(['Landkreis']).sum()
     
