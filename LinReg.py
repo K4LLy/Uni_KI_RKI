@@ -1,3 +1,5 @@
+#Grundstruktur: Lara Ahrens
+#Auslagern in Funktionen, Verallgemeinerung, Verschönerung, Refactor: Pascal
 import numpy as np
 import matplotlib.pyplot as plt
 import Util as u

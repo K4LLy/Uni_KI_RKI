@@ -1,5 +1,5 @@
 import matplotlib.pyplot as matplot
-
+#Einfügen der einzelnen Dateien in Funktionen: Pascal
 #Kuchendiagramm
 def generate_pie_chart(covid_data):
     #Grundstruktur Lara Ahrens

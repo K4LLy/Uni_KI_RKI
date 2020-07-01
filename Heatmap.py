@@ -1,3 +1,4 @@
+#Auslagern der 3 Dateien in eine und Refactoring: Pascal
 import folium
 import pandas as pd
 import numpy as np
@@ -76,6 +77,7 @@ def generate_heatmap(covid_data, file_name = "Heatmap"):
     print('Heatmap created.')
     
 def generate_chart(covid_data):
+    #Nina
     print('Creating Heatmapchart...')
     data = covid_data.groupby(['Altersgruppe']).sum()
     
