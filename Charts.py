@@ -2,6 +2,8 @@ import matplotlib.pyplot as matplot
 
 #Kuchendiagramm
 def generate_pie_chart(covid_data):
+    #Grundstruktur Lara Ahrens
+    #Refactor Gerriet Schmidt
     print('Creating Piechart...')
     data = covid_data.copy()
     data['Altersgruppe'].replace({'A05-A14' : 'Sonstige', 'A00-A04' : 'Sonstige', 'unbekannt' : 'Sonstige', 
@@ -38,6 +40,8 @@ def generate_pie_chart(covid_data):
 
 #Balkendiagramm
 def generate_bar_chart(covid_data):
+    #Grundstruktur Lara Ahrens
+    #Refactor Gerriet Schmidt
     print('Creating Barchart...')
     data = covid_data.groupby(['Geschlecht']).sum()
     
@@ -62,7 +66,9 @@ def generate_bar_chart(covid_data):
     matplot.savefig("Result\\" + 'barchart_erkrankung_geschlecht' + ".png")
     matplot.show()
 #Grafik nach Meldedatum
-def generate_graph(covid_data):   
+def generate_graph(covid_data): 
+    #Grundstruktur Lara Ahrens mit Graph für jedes Meldedatum 
+    #Refactor Gerriet Schmidt
     print('Creating Graph...') 
     data = covid_data.sort_values(by = ['Kalenderwoche']).groupby(['Kalenderwoche']).sum()
     
