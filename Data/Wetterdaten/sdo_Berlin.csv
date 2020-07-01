@@ -1,0 +1,7 @@
+"SDO_ID","SDO_Name","Geogr_Laenge","Geogr_Breite","Hoehe_ueber_NN","Metadata_Link"
+"433","Berlin-Tempelhof","13.402115","52.467488","48.0","https://cdc.dwd.de/rest/metadata/station/html/812300083047"
+"403","Berlin-Dahlem (FU)","13.301731","52.453711","51.0","https://cdc.dwd.de/rest/metadata/station/html/812300258343"
+"430","Berlin-Tegel","13.308848","52.564412","36.0","https://cdc.dwd.de/rest/metadata/station/html/812300376871"
+"400","Berlin-Buch","13.50215","52.630941","60.0","https://cdc.dwd.de/rest/metadata/station/html/812300552167"
+"420","Berlin-Marzahn","13.559774","52.544749","60.0","https://cdc.dwd.de/rest/metadata/station/html/812300670695"
+"410","Berlin-Kaniswall","13.730854","52.404034","33.0","https://cdc.dwd.de/rest/metadata/station/html/812300964519"
