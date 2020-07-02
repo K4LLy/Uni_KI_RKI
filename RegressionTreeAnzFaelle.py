@@ -9,10 +9,11 @@ from sklearn.preprocessing import OneHotEncoder
 
 #covid_data = reader.get_covid_data()
 def regressionTree(covid_data):
-    covid_data = covid_data.groupby(['Meldedatum', 'Geschlecht', 'Altersgruppe']).sum() #Gruppieren der Daten + Summieren der Fälle
+    print('Create Regression Tree...')
+    data = covid_data.groupby(['Meldedatum', 'Geschlecht', 'Altersgruppe']).sum() #Gruppieren der Daten + Summieren der Fälle
     
-    values = np.array(covid_data.index.get_level_values(1)) #Index für Geschlecht
-    values_alter = np.array(covid_data.index.get_level_values(2)) #Index für Altergruppe
+    values = np.array(data.index.get_level_values(1)) #Index für Geschlecht
+    values_alter = np.array(data.index.get_level_values(2)) #Index für Altergruppe
     
     #integer encode
     label_encoder = LabelEncoder() #sklearn - 0 = männlich, 1 = weiblich, 2 = unbekannt
@@ -27,25 +28,25 @@ def regressionTree(covid_data):
     onehot_encoded_alter = onehot_encoder.fit_transform(integer_encoded_alter)
     
     #Onehot encoded in Daten laden
-    covid_data.loc[:,('maennlich')] = onehot_encoded[ :, 0]
-    covid_data.loc[:,('weiblich')] = onehot_encoded[ :, 1]
-    covid_data.loc[:,('unbekannt')] = onehot_encoded[ :, 2]
-    covid_data.loc[:,('A00-A04')] = onehot_encoded_alter[ :, 0]
-    covid_data.loc[:,('A05-A14')] = onehot_encoded_alter[ :, 1]
-    covid_data.loc[:,('A15-A34')] = onehot_encoded_alter[ :, 2]
-    covid_data.loc[:,('A35-A59')] = onehot_encoded_alter[ :, 3]
-    covid_data.loc[:,('A60-A79')] = onehot_encoded_alter[ :, 4]
-    covid_data.loc[:,('A80+')] = onehot_encoded_alter[ :, 5]
-    covid_data.loc[:,('A_unbekannt')] = onehot_encoded_alter[ :, 6]
+    data.loc[:,('maennlich')] = onehot_encoded[ :, 0]
+    data.loc[:,('weiblich')] = onehot_encoded[ :, 1]
+    data.loc[:,('unbekannt')] = onehot_encoded[ :, 2]
+    data.loc[:,('A00-A04')] = onehot_encoded_alter[ :, 0]
+    data.loc[:,('A05-A14')] = onehot_encoded_alter[ :, 1]
+    data.loc[:,('A15-A34')] = onehot_encoded_alter[ :, 2]
+    data.loc[:,('A35-A59')] = onehot_encoded_alter[ :, 3]
+    data.loc[:,('A60-A79')] = onehot_encoded_alter[ :, 4]
+    data.loc[:,('A80+')] = onehot_encoded_alter[ :, 5]
+    data.loc[:,('A_unbekannt')] = onehot_encoded_alter[ :, 6]
     
     #Löschen unnötiger Daten
-    covid_data = covid_data.drop(['AnzahlTodesfall'], 1)
-    covid_data = covid_data.drop(['AnzahlGenesen'], 1)
+    data = data.drop(['AnzahlTodesfall'], 1)
+    data = data.drop(['AnzahlGenesen'], 1)
     
     
-    features = np.array(covid_data.drop(['AnzahlFall'], 1)) #drop weil Anzahl unser Label
+    features = np.array(data.drop(['AnzahlFall'], 1)) #drop weil Anzahl unser Label
     features = preprocessing.scale(features)
-    labels = np.array(covid_data.filter(items=['AnzahlFall']))
+    labels = np.array(data.filter(items=['AnzahlFall']))
     
     
     reg_tree = tree.DecisionTreeRegressor()
@@ -89,3 +90,5 @@ def regressionTree(covid_data):
           'für Altersgruppe 35-59 ' + str(labels_pred[3])+'\n' +
           'für Altersgruppe 60-79 ' + str(labels_pred[4])+'\n' +
           'für Altersgruppe 80+ ' + str(labels_pred[5]))
+    
+    print('Regression Tree created.')

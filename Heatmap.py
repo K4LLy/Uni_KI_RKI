@@ -59,10 +59,10 @@ def generate_heatmap(covid_data, file_name = "Heatmap"):
     #Grundstruktur: Lara Ahrens und Gerriet Schmidt
     #Refactoring Pascal Winkler
     print('Generate Heatmap...')
-    covid_grouped = covid_data.groupby(['Landkreis']).sum()
+    data = covid_data.groupby(['Landkreis']).sum()
     
     heatmap_data = []
-    for lk, row in covid_grouped.iterrows():
+    for lk, row in data.iterrows():
         geocode = lambda query: geolocator.geocode("%s, Deutschland" % query)
         lk_location = geocode(lk)
         
@@ -102,7 +102,7 @@ def generate_chart(covid_data):
     
     ax.set_xticklabels(label_status)
     ax.set_yticklabels(label_altersgruppe)
-    ax.set_title('Heatmap: Altersgruppen - erkrankt, genesen, tot')
+    ax.set_title('Heatmap: Altersgruppen')
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
     
     #Zellenbeschriftung

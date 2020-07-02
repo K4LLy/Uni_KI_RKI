@@ -17,6 +17,7 @@ import Util_print_data_bundeslaender as printing
 
     
 def predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoche, column_to_predict, massnahmenJN, maskejn, kontaktjn):
+    data = covid_data.copy()
     str_to_predict = ''
     if column_to_predict == 'AnzahlFall':
        str_to_predict = 'Anzahl der Fälle' 
@@ -27,15 +28,15 @@ def predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoche, column
     elif column_to_predict == 'R_Null_Faktor':
         str_to_predict = 'R0-Faktor'
     print('Vorhersage von '+str_to_predict+ 'für alle Bundesländer mit der linearen Regression, dem Baum und dem neuronalen Netzwerk anhand von Onehotencoding der Bundesländer.')
-    covid_data = preparing.onehot_encode_data(covid_data)
-    covid_data = preparing.prepare_data_for_every_bundesland(covid_data)
+    data = preparing.onehot_encode_data(data)
+    data = preparing.prepare_data_for_every_bundesland(data)
 
     #features: Kalenderwoche, Bundesland (dargestellt als 0 und 1), massnahmen
     #label: colum_to_predict (AnzahlFall/Todesfall/genesen)
-    dataframe_der_features = covid_data.filter(items= ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN','KontaktbeschraenkungJN', 'Baden-Württemberg', 'Bayern', 'Berlin', 'Brandenburg','Bremen', 'Hamburg', 'Hessen', 'Mecklenburg-Vorpommern','Niedersachsen', 'Nordrhein-Westfalen', 'Rheinland-Pfalz', 'Saarland', 'Sachsen', 'Sachsen-Anhalt', 'Schleswig-Holstein', 'Thüringen' ])
+    dataframe_der_features = data.filter(items= ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN','KontaktbeschraenkungJN', 'Baden-Württemberg', 'Bayern', 'Berlin', 'Brandenburg','Bremen', 'Hamburg', 'Hessen', 'Mecklenburg-Vorpommern','Niedersachsen', 'Nordrhein-Westfalen', 'Rheinland-Pfalz', 'Saarland', 'Sachsen', 'Sachsen-Anhalt', 'Schleswig-Holstein', 'Thüringen' ])
     features = np.array(dataframe_der_features)
 
-    dataframe_der_labels = covid_data.filter(items = [column_to_predict])
+    dataframe_der_labels = data.filter(items = [column_to_predict])
     
     labels = np.array(dataframe_der_labels)
     #Test und Trainingssatz
@@ -111,6 +112,7 @@ def predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoche, column
 
 
 def predict_Data_for_one_bundesland(covid_data, kalenderwoche, column_to_predict, massnahmenJN, bundesland,maskeJN, kontaktJN):
+    data = covid_data.copy()
     str_to_predict = ''
     if column_to_predict == 'AnzahlFall':
        str_to_predict = 'Anzahl der Fälle' 
@@ -121,13 +123,13 @@ def predict_Data_for_one_bundesland(covid_data, kalenderwoche, column_to_predict
     elif column_to_predict == 'R_Null_Faktor':
         str_to_predict = 'R0-Faktor'
     print('Vorhersage von '+str_to_predict+ ' für das Bundesland '+ bundesland + ' mit der linearen Regression, dem Baum und dem neuronalen Netzwerk.')
-    covid_data = preparing.onehot_encode_data(covid_data)
-    covid_data = preparing.prepare_Data_for_one_bundesland(covid_data, bundesland)
+    data = preparing.onehot_encode_data(data)
+    data = preparing.prepare_Data_for_one_bundesland(data, bundesland)
     #Features
-    dataframe_der_features = covid_data.filter(items= ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN', 'KontaktbeschraenkungJN' ])
+    dataframe_der_features = data.filter(items= ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN', 'KontaktbeschraenkungJN' ])
     features = np.array(dataframe_der_features)
     #Label: AnzahlFall/AnzahlTodesfall/AnzahlGenesen/R-0_faktor im übergebenen Bundesland
-    dataframe_der_labels = covid_data.filter(items = [column_to_predict])
+    dataframe_der_labels = data.filter(items = [column_to_predict])
     
     labels = np.array(dataframe_der_labels)
     #Test und Trainingssatz
@@ -214,6 +216,7 @@ def predict_Data_for_one_bundesland(covid_data, kalenderwoche, column_to_predict
       
 
 def predict_data_with_knn_multi_label(covid_data, column_to_predict, kalenderwoche, grossveranstaltung,maskenpflicht,kontaktbeschraenkung):
+    data = covid_data.copy()
     str_to_predict = ''
     if column_to_predict == 'AnzahlFall':
        str_to_predict = 'Anzahl der Fälle' 
@@ -222,17 +225,17 @@ def predict_data_with_knn_multi_label(covid_data, column_to_predict, kalenderwoc
     elif column_to_predict =='AnzahlTodesfall':
         str_to_predict = 'Tote Fälle'
     print("Anhand eines Features wird ein Label mit den Fällen für jedes Bundesland vorausgesagt")
-    covid_data = preparing.onehot_encode_data(covid_data)
-    covid_data = preparing.prepare_data_for_every_bundesland(covid_data)
-    covid_data = covid_data.loc[covid_data['Kalenderwoche'] >= 10  ] #nur für alle Bundesländer!
-    covid_data = covid_data.loc[covid_data['Kalenderwoche'] <26  ] 
+    data = preparing.onehot_encode_data(data)
+    data = preparing.prepare_data_for_every_bundesland(data)
+    data = data.loc[data['Kalenderwoche'] >= 10  ] #nur für alle Bundesländer!
+    data = data.loc[data['Kalenderwoche'] <26  ] 
     
     #features sind für jedes Bundesland gleich, dürfen aber nur die Größe der Label haben
-    features_dataframe = covid_data.loc[covid_data['Bundesland'] == 'Bayern']
+    features_dataframe = data.loc[data['Bundesland'] == 'Bayern']
     features_dataframe = features_dataframe.filter(items = ['Kalenderwoche', 'GroßveranstaltungJN', 'MaskenpflichtJN', 'KontaktbeschraenkungJN'])
 
     
-    labels_dataframe = covid_data.filter(items = [column_to_predict])
+    labels_dataframe = data.filter(items = [column_to_predict])
     labels_array1 = np.array(labels_dataframe)
     
     #Das Label besteht aus einem Vektor, das für jedes Bundesland eine Ausgabe hat

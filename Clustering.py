@@ -4,13 +4,14 @@ Lara Ahrens
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
-def cluster_kmean_fall_alter(covid_data):
-                                     
+def cluster_kmean_fall_alter(covid_data):                                     
     print('Create Cluster Fall Alter...')
+    
+    data = covid_data.copy()
     altergruppe_durchschnittsalter = []
     altergruppe = ''
     indexes = []
-    for index, row in covid_data.iterrows():
+    for index, row in data.iterrows():
         altergruppe = row['Altersgruppe']
         if altergruppe == 'A00-A04':
             altergruppe_durchschnittsalter.append(2)
@@ -28,24 +29,21 @@ def cluster_kmean_fall_alter(covid_data):
             altergruppe_durchschnittsalter.append(0) 
         indexes.append(1)
  
-    covid_data.loc[:,('Altersgruppedurchschnitt')] = altergruppe_durchschnittsalter
-    covid_data.loc[:,('Index')] = indexes
-    dataframe = covid_data.groupby(['Bundesland', 'Altersgruppe']).sum()
-    for index, row in dataframe.iterrows():
+    data.loc[:,('Altersgruppedurchschnitt')] = altergruppe_durchschnittsalter
+    data.loc[:,('Index')] = indexes
+    data = data.groupby(['Bundesland', 'Altersgruppe']).sum()
+    for index, row in data.iterrows():
         altergruppe = row['Altersgruppedurchschnitt']
         anzahl = row['Index']
-        dataframe.at[index, 'Altersgruppedurchschnitt'] = altergruppe/anzahl
-
+        data.at[index, 'Altersgruppedurchschnitt'] = altergruppe/anzahl
         
-    dataframe = dataframe.filter(items= ['Altersgruppedurchschnitt', 'AnzahlFall'])
-
-
+    data = data.filter(items= ['Altersgruppedurchschnitt', 'AnzahlFall'])
     
-    kmeans = KMeans(n_clusters=10).fit(dataframe)
+    kmeans = KMeans(n_clusters=10).fit(data)
     centroids = kmeans.cluster_centers_
     print(centroids)
 
-    plt.scatter(dataframe['Altersgruppedurchschnitt'], dataframe['AnzahlFall'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
+    plt.scatter(data['Altersgruppedurchschnitt'], data['AnzahlFall'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
     plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
     plt.title('Anzahl Fall pro Altersgruppe (Durschnitt) pro Bundesland')
     plt.xlabel('Altersgruppe Durschnittsalter')
@@ -58,19 +56,18 @@ def cluster_kmean_fall_alter(covid_data):
     
 def cluster_kmean_faelle_todesfaelle(covid_data):
     print('Create Cluster Fall Todesfall...')
-    dataframe = covid_data.groupby(['Bundesland', 'Altersgruppe']).sum()
-    dataframe = dataframe.filter(items= ['AnzahlFall', 'AnzahlTodesfall'])
-    kmeans = KMeans(n_clusters=5).fit(dataframe)
+    data = covid_data.groupby(['Bundesland', 'Altersgruppe']).sum()
+    data = data.filter(items= ['AnzahlFall', 'AnzahlTodesfall'])
+    kmeans = KMeans(n_clusters=5).fit(data)
     centroids = kmeans.cluster_centers_
     print(centroids)
 
-    plt.scatter(dataframe['AnzahlFall'], dataframe['AnzahlTodesfall'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
+    plt.scatter(data['AnzahlFall'], data['AnzahlTodesfall'], c= kmeans.labels_.astype(float), s=50, alpha=0.5)
     plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
     plt.title('Anzahl Fall und Todesfall pro Bundesland pro Altergruppe')
     plt.xlabel('Fälle')
     plt.ylabel('davon Todesfälle')
     print('Cluster created.')
-
     
     plt.savefig("Result\\" + 'clustering_k_mean_faelle_todesfaelle_bundesland_altersgruppe' + ".png")
     plt.show()
