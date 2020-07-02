@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 
-def prepare_data(covid_data, column, offset, filter_by_col = True, scale_data = True):
+def prepare_data(covid_data, column, offset, pred_days, filter_by_col = True, scale_data = True):
     print('Preparing data...')
     
     data = covid_data.groupby(['Meldedatum']).sum().sort_values(by = ['Meldedatum'])
@@ -16,20 +16,29 @@ def prepare_data(covid_data, column, offset, filter_by_col = True, scale_data = 
         data = data.filter(items=[column])
     
     for i in range(offset):
-        data['col-' + str(i)] = data[column]
-        data['col-' + str(i)] = data['col-' + str(i)].shift(i)
+        i += 1
+        temp = data.shift(i, axis = 0)
+        data.loc[:,('col-' + str(i))] = temp[column]
+        
+    temp = data.shift(i - offset, axis = 0)
+    data.loc[:,column] = temp
+    X = np.array(data.drop([column], 1))
+    X_pred = None
     
-    X = None
     if scale_data:
-        X = preprocessing.scale(data[offset:-offset:])
+        X = data[offset:]
+        X = preprocessing.scale(X)
+        X_pred = X[-pred_days:]
+        X = X[:-offset:]
     else:
         X = data[offset:-offset:]
     
-    y = np.array(data[column])[offset:-offset:]
+    y = np.array(data.filter(items=[column]))
+    y = y[offset:-offset:]
     
     print('Data prepared.')
     
-    return X, y, data
+    return X, X_pred, y, data
 
 def get_train_test(X, y, test_size):
     return train_test_split(X, y, test_size = test_size)
@@ -45,10 +54,12 @@ def get_ml_plot_title(shown_days, column):
         return None
     
 def save_model(model, file_name):
+    print('Saving model.')
     with open('Result\\Models\\' + file_name + '.pickle', 'wb') as f:
             pickle.dump(model, f)
             
 def load_model(file_name):
+    print('Loading model.')
     try:        
         return pickle.load(open('Result\\Models\\' + file_name + '.pickle', 'rb'))
     except (OSError, IOError):

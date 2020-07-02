@@ -1,7 +1,8 @@
 from sklearn.neural_network import MLPRegressor
+from sklearn.model_selection import GridSearchCV
+from sklearn import preprocessing
 
 import matplotlib.pyplot as plt
-
 import Util as u
 import numpy as np
 import pandas as pd
@@ -35,7 +36,7 @@ def print_info(model, X_test, y_test, show_loss_plot = True):
         pd.DataFrame(model.loss_curve_).plot()
         plt.show()
     
-def load(unique_name = '', activation = 'relu', solver = 'adam', learning_rate = 'adaptive', random_state = 0, max_iter = 500):
+def load(unique_name = '', activation = 'relu', solver = 'adam', learning_rate = 'adaptive', random_state = 1, max_iter = 1000):
     print('Loading neural network model...')
     
     #https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
@@ -62,7 +63,7 @@ def load(unique_name = '', activation = 'relu', solver = 'adam', learning_rate =
     
     return model
 
-def create(X_train, y_train, hidden_layer_sizes = (10, 5, ), unique_name = '', activation = 'relu', solver = 'adam', learning_rate = 'adaptive', random_state = 0, max_iter = 500, save_as_file = False):
+def create(X_train, y_train, hidden_layer_sizes = (15, 12, 11, 15, ), unique_name = '', activation = 'relu', solver = 'adam', learning_rate = 'adaptive', random_state = 1, max_iter = 1000, save_as_file = False):
     print('Training a new neural network...')
     
     model = MLPRegressor(hidden_layer_sizes = hidden_layer_sizes, activation = activation, solver = solver,
@@ -78,3 +79,36 @@ def create(X_train, y_train, hidden_layer_sizes = (10, 5, ), unique_name = '', a
     print('Neural Network trained.')
     
     return model
+
+#https://stackoverflow.com/questions/46028914/multilayer-perceptron-convergencewarning-stochastic-optimizer-maximum-iterat
+def grid_search(X_train, y_train):
+    layer_sizes = []
+    for x in range(15):
+        for y in range(15):
+            for z in range(15):
+                layer_sizes.append((x + 1, y + 1, z + 1, ))
+    
+    param_grid = [
+        {
+            'activation' : ['identity', 'logistic', 'tanh', 'relu'],
+            'solver' : ['lbfgs', 'sgd', 'adam'],
+            'hidden_layer_sizes': layer_sizes,
+            'learning_rate': ['constant', 'invscaling', 'adaptive'],
+            'random_state': [0, 1, 2]
+        }
+       ]
+    
+    clf = GridSearchCV(MLPRegressor(), param_grid, cv = 2, scoring='neg_mean_absolute_error')
+    
+    clf.fit(X_train, y_train.ravel())
+    
+    
+    print("Best parameters set found on development set:")
+    print(clf.best_params_)
+    
+    """
+    Funktioniert nicht:
+    ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
+    X_train hat keine NaN-Werte, kein 'Infinity' und ist vom Typ 'float64'
+    y_train hat keine NaN-Werte, kein 'Infinity' und keine Werte über 10000
+    """
