@@ -101,7 +101,7 @@ def generate_chart(covid_data):
     
     ax.set_xticklabels(label_status)
     ax.set_yticklabels(label_altersgruppe)
-    
+    ax.set_title('Heatmap: Altersgruppen - erkrankt, genesen, tot')
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
     
     #Zellenbeschriftung

@@ -8,6 +8,7 @@ import Util as u
 import Clustering as cluster
 import RegressionTreeAnzFaelle as rt
 import bundeslaender_knn_linReg_linBaum as bundeslaender
+import CovidWeather as weather
 
 covid_data = reader.get_covid_data()
 
@@ -68,3 +69,5 @@ bundeslaender.predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoc
 bundeslaender.predict_Data_for_one_bundesland(covid_data, kalenderwoche, pred_col, grossveranstaltung, bundesland,maskenpflicht, kontaktbeschraenkung)
 bundeslaender.predict_data_with_knn_multi_label(covid_data, pred_col, kalenderwoche, grossveranstaltung,maskenpflicht,kontaktbeschraenkung)
 
+
+weather.get_covid_weather('Bayern', covid_data)

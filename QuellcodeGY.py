@@ -1,6 +1,7 @@
 import keras
 import numpy as np
 import Util as u
+import DataReader as reader
 
 import matplotlib.pyplot as plt
 
@@ -12,6 +13,8 @@ from keras.optimizers import Adam
 from keras.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
+
+from geopy import distance, Nominatim
 
 def predict_nn_with_keras(data, column, print_outputs = False):
     print('Predict ' + column + ' with neural network...')
@@ -131,3 +134,38 @@ def prepare_data_lr(dataframe, test_data_count, predicted_days, shown_days, colu
     features = features[:-test_data_count:]
     
     return new_data, dataframe, labels, features_lately, features
+
+
+
+def get_closest_station(lat, lon, weather_data):
+    closest_dist = -1
+    closest_station = None
+    
+    for row in weather_data.itertuples():
+        dist = distance.distance([lat, lon], [row.Geogr_Breite, row.Geogr_Laenge]).km
+        if closest_dist == -1 or dist < closest_dist:
+            closest_dist = dist
+            closest_station = row
+    
+    return closest_station
+
+print('Reading data')
+data_nds_wetter = reader.get_weather_data()
+data_covid = reader.get_covid_data()
+print('Data read.') 
+
+covid_nds = data_covid[data_covid.Bundesland.eq('Niedersachsen')]
+
+i = 0
+percent = 0
+naechste_Station = []
+for index, row in covid_nds.iterrows():
+    station = get_closest_station(row['Landkreis_Lat'], row['Landkreis_Lon'], data_nds_wetter)
+    naechste_Station.append(station)
+    i += 1
+    if ((i / len(covid_nds)) * 100) >= percent:
+        print(str(percent) + '% finished')
+        percent += 5
+
+covid_nds['naechste_Station'] = naechste_Station
+print(covid_nds.head())   
