@@ -2,6 +2,7 @@ import keras
 import numpy as np
 import Util as u
 import DataReader as reader
+import pickle
 
 import matplotlib.pyplot as plt
 
@@ -10,10 +11,11 @@ from keras.models import Sequential
 from keras.layers import Activation
 from keras.layers.core import Dense
 from keras.optimizers import Adam
-from keras.metrics import mean_squared_error
+#from keras.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
-
 from geopy import distance, Nominatim
 
 def predict_nn_with_keras(data, column, print_outputs = False):
@@ -94,6 +96,7 @@ def predict_old(data, test_data_count, predicted_days, shown_days, column, save_
     
     features_train, features_test, labels_train, labels_test = train_test_split(X, y, test_size=0.2)
     linreg = LinearRegression()
+    
     linreg.fit(features_train, labels_train)
     
     if save_model:
@@ -109,6 +112,13 @@ def predict_old(data, test_data_count, predicted_days, shown_days, column, save_
     dataframe.loc[dataframe.index[-shown_days]:, column].plot(title=column,  rot=45)
     dataframe.loc[dataframe.index[-shown_days]:, 'Forecast'].plot(title=plt_title, rot=45)
     plt.show()
+    
+    if print_metric:
+        print('metrics for LinReg:')
+        print('    Score: ' + str(linreg.score(features_test, labels_test))) #Score: andere Metrik, die nicht behandelt wurde. Ãhnlich zu MSE
+        print('    MSE: ' + str(mean_squared_error(labels_test, labels_pred)))
+        print('    MAE: ' + str(mean_absolute_error(labels_test, labels_pred)))
+    
     print('Predicted ' + column + '.')
     
 
@@ -149,23 +159,24 @@ def get_closest_station(lat, lon, weather_data):
     
     return closest_station
 
-print('Reading data')
-data_nds_wetter = reader.get_weather_data()
-data_covid = reader.get_covid_data()
-print('Data read.') 
-
-covid_nds = data_covid[data_covid.Bundesland.eq('Niedersachsen')]
-
-i = 0
-percent = 0
-naechste_Station = []
-for index, row in covid_nds.iterrows():
-    station = get_closest_station(row['Landkreis_Lat'], row['Landkreis_Lon'], data_nds_wetter)
-    naechste_Station.append(station)
-    i += 1
-    if ((i / len(covid_nds)) * 100) >= percent:
-        print(str(percent) + '% finished')
-        percent += 5
-
-covid_nds['naechste_Station'] = naechste_Station
-print(covid_nds.head())   
+def read_weather_data():
+    print('Reading data')
+    data_nds_wetter = reader.get_weather_data()
+    data_covid = reader.get_covid_data()
+    print('Data read.') 
+    
+    covid_nds = data_covid[data_covid.Bundesland.eq('Niedersachsen')]
+    
+    i = 0
+    percent = 0
+    naechste_Station = []
+    for index, row in covid_nds.iterrows():
+        station = get_closest_station(row['Landkreis_Lat'], row['Landkreis_Lon'], data_nds_wetter)
+        naechste_Station.append(station)
+        i += 1
+        if ((i / len(covid_nds)) * 100) >= percent:
+            print(str(percent) + '% finished')
+            percent += 5
+    
+    covid_nds['naechste_Station'] = naechste_Station
+    print(covid_nds.head())   

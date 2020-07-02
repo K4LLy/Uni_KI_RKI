@@ -5,10 +5,11 @@ import Charts as ch
 import LinReg as lr
 import NeuralNetwork as nn
 import Util as u
-import Clustering as cluster
-import RegressionTreeAnzFaelle as rt
-import bundeslaender_knn_linReg_linBaum as bundeslaender
-import CovidWeather as weather
+#import Clustering as cluster
+#import RegressionTreeAnzFaelle as rt
+#import bundeslaender_knn_linReg_linBaum as bundeslaender
+#import CovidWeather as cw
+import QuellcodeGY as gy
 
 covid_data = reader.get_covid_data()
 
@@ -16,6 +17,24 @@ pred_col = 'AnzahlFall'
 test_name = 'P_Test1'
 offset = 15
 shown_days = 60
+pred_days = 20
+
+X, X_pred, y, data = u.prepare_data(covid_data, pred_col, offset, pred_days)
+X_train, X_test, y_train, y_test = u.get_train_test(X, y, 0.2)
+
+nn.create(X_train, y_train, unique_name = test_name, save_as_file = True)
+neural_network = nn.load(test_name)
+nn.predict(neural_network, data, X_pred, pred_col, shown_days)
+nn.print_info(neural_network, X_test, y_test)
+
+#lr.create(X_train, y_train, test_name, save_as_file = True)
+linear_regression = lr.load(test_name)
+y_pred = lr.predict(linear_regression, data, X_pred, pred_col, shown_days)
+lr.print_info(linear_regression, X_test, y_test, y[-len(y_pred):], y_pred)
+
+#gy.predict_old(data, offset, len(X_test), shown_days, pred_col, print_metric = True)
+
+"""
 bundesland = 'Niedersachsen'
 kalenderwoche = 27
 grossveranstaltung = 1 #ja
@@ -34,19 +53,6 @@ cluster.cluster_kmean_fall_alter(covid_data)
 
 
 rt.regressionTree(covid_data)
-
-X, y, data = u.prepare_data(covid_data, pred_col, offset)
-X_train, X_test, y_train, y_test = u.get_train_test(X, y, 0.2)
-
-nn.create(X_train, y_train, unique_name = test_name, save_as_file = True)
-neural_network = nn.load(test_name)
-nn.predict(neural_network, data, X_test, pred_col, shown_days)
-nn.print_info(neural_network, X_test, y_test, False)
-
-lr.create(X_train, y_train, test_name, save_as_file = True)
-linear_regression = lr.load(test_name)
-y_pred = lr.predict(linear_regression, data, X_test, pred_col, shown_days)
-lr.print_info(linear_regression, X_test, y_test, y_pred)
 
 
 
@@ -71,3 +77,4 @@ bundeslaender.predict_data_with_knn_multi_label(covid_data, pred_col, kalenderwo
 
 
 weather.get_covid_weather('Bayern', covid_data)
+"""
