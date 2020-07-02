@@ -9,7 +9,7 @@ import Clustering as cluster
 import RegressionTreeAnzFaelle as rt
 import bundeslaender_knn_linReg_linBaum as bundeslaender
 #import CovidWeather as cw
-import Funkmasten as fm
+#import Funkmasten as fm
 import QuellcodeGY as gy
 
 from IPython import get_ipython
@@ -65,7 +65,7 @@ carryon = input()
 
 print('Press Enter to generate charts for Covid-19 and weather ...')
 carryon = input()
-#weatherMain ausführen
+#cw.get_covid_weather(bundesland, covid_data)
 
 print('Press Enter to generate the heatmap with markers for 5G masts ...')
 carryon = input()
