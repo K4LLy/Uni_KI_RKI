@@ -1,4 +1,4 @@
-#Gerriet 
+#Gerriet Schmidt mit Hilfestellungen von Lara Ahrens
 import numpy as np
 #import DataReader as reader
 import matplotlib.pyplot as plt

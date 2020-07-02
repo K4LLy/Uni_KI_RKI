@@ -1,5 +1,5 @@
-#ganz grundlegende Struktur: Lara (nur die lineare Regression und Zusammebau von Feature und Label)
-# Refactor, Verschönerung, Verallgemeinerung, Laden des Models, Speichern des Models, Auslagern in Funktionen: Pascal
+
+# Pascal Winkler
 import numpy as np
 import matplotlib.pyplot as plt
 import Util as u

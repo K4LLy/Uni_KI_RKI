@@ -19,6 +19,7 @@ from sklearn import preprocessing
 from geopy import distance, Nominatim
 
 def predict_nn_with_keras(data, column, print_outputs = False):
+    #Pascal Winkler
     print('Predict ' + column + ' with neural network...')
     
     title = u.get_ml_plot_title(80, column)
@@ -77,6 +78,8 @@ def predict_nn_with_keras(data, column, print_outputs = False):
         plt.show()
         
 def predict_old(data, test_data_count, predicted_days, shown_days, column, save_model = False, print_metric = False, predicted_days_in_future = 0):
+    #Lara Ahrens
+    #Auslagerung in Funktion mit Verallgemeinerung Pascal Winkler
     print('Predict ' + column + ' with LinReg...')
     data = data.groupby(['Meldedatum']).sum().sort_values(by = ['Meldedatum'])
     data = data.filter(items=[column])
@@ -124,6 +127,8 @@ def predict_old(data, test_data_count, predicted_days, shown_days, column, save_
 
 
 def prepare_data_lr(dataframe, test_data_count, predicted_days, shown_days, column):
+    #Lara Ahrens
+    #Auslagerung in Funktion mit Verallgemeinerung Pascal Winkler
     dataframe = dataframe.groupby(['Meldedatum']).sum().sort_values(by = ['Meldedatum'])
     
     for i in range(test_data_count):
@@ -148,6 +153,7 @@ def prepare_data_lr(dataframe, test_data_count, predicted_days, shown_days, colu
 
 
 def get_closest_station(lat, lon, weather_data):
+    #Nina Renken
     closest_dist = -1
     closest_station = None
     

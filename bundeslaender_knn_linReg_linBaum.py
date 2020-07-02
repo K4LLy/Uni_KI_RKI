@@ -1,8 +1,4 @@
-
-"""
-
-Lara Ahrens
-"""
+#Lara Ahrens
 
 #import
 import numpy as np
@@ -15,10 +11,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn import tree
 from sklearn.neural_network import MLPRegressor
-import Util as u
 import Util_prepare_data_bundeslaender as preparing
 import Util_print_data_bundeslaender as printing
-import NeuralNetwork as nn
+
 
     
 def predict_Data_for_onehot_encoded_bundesland(covid_data, kalenderwoche, column_to_predict, massnahmenJN, maskejn, kontaktjn):

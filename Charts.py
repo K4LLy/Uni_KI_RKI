@@ -1,10 +1,10 @@
 import matplotlib.pyplot as matplot
-#Einfügen der einzelnen Dateien in Funktionen und Refactoring: Pascal
+#Einfuegen der einzelnen Dateien in Funktionen und Refactoring: Pascal
 #Urheber der Inhalte der Funktionen: in der jeweiligen Funktion
 #Kuchendiagramm
 def generate_pie_chart(covid_data):
     #Grundstruktur Lara Ahrens
-    #Refactor Gerriet Schmidt
+    #Refactor Gerriet Schmidt (Verschoenerung des Graphen, Achsenbeschriftungen)
     print('Creating Piechart...')
     data = covid_data.copy()
     data['Altersgruppe'].replace({'A05-A14' : 'Sonstige', 'A00-A04' : 'Sonstige', 'unbekannt' : 'Sonstige', 
@@ -42,7 +42,7 @@ def generate_pie_chart(covid_data):
 #Balkendiagramm
 def generate_bar_chart(covid_data):
     #Grundstruktur Lara Ahrens
-    #Refactor Gerriet Schmidt
+    #Refactor Gerriet Schmidt (Verschoenerung des Graphen, Achsenbeschriftungen)
     print('Creating Barchart...')
     data = covid_data.groupby(['Geschlecht']).sum()
     
@@ -68,8 +68,8 @@ def generate_bar_chart(covid_data):
     matplot.show()
 #Grafik nach Meldedatum
 def generate_graph(covid_data): 
-    #Grundstruktur Lara Ahrens mit Graph für jedes Meldedatum 
-    #Refactor Gerriet Schmidt
+    #Grundstruktur Lara Ahrens mit Graph fuer jedes Meldedatum 
+    #Refactor Gerriet Schmidt (Verschoenerung des Graphen, Achsenbeschriftungen)
     print('Creating Graph...') 
     data = covid_data.sort_values(by = ['Kalenderwoche']).groupby(['Kalenderwoche']).sum()
     

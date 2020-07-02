@@ -1,4 +1,4 @@
-#Nina
+#Nina Renken
 #Quelle für Koordinaten der 5G-Masten
 #https://www.5g-anbieter.info/verfuegbarkeit/5g-verfuegbarkeit-testen.html
 
