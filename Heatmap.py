@@ -57,6 +57,7 @@ def generate_circle(covid_data, file_name = "Circlemap"):
 
 def generate_heatmap(covid_data, file_name = "Heatmap"):
     #Grundstruktur: Lara Ahrens und Gerriet Schmidt
+    #Refactoring Pascal Winkler
     print('Generate Heatmap...')
     covid_grouped = covid_data.groupby(['Landkreis']).sum()
     
