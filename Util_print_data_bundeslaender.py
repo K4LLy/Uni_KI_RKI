@@ -1,12 +1,8 @@
 
-"""
-
-Lara Ahrens
-"""
-
+#Lara Ahrens
 
 def print_Data_every_bundesland_onehot_encoded(labels_pred, str_to_predict, regression, kalenderwoche):
-    print(regression +' '+str_to_predict + ' in KW '+str(kalenderwoche) +' :' + '\n' +
+    print(regression +' '+str_to_predict + ' in Kalenderwoche '+str(kalenderwoche) +' :' + '\n' +
           str_to_predict + ' in Baden-Wüttemberg: '       + str(labels_pred[0])+'\n' +
           str_to_predict + ' in Bayern: '                 + str(labels_pred[1])+'\n' +
           str_to_predict + ' in Berlin: '                 + str(labels_pred[2])+'\n' +

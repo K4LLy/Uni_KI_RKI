@@ -72,6 +72,8 @@ def predict_nn_with_keras(data, column, print_outputs = False):
         plt.show()
         
 def predict_old(data, test_data_count, predicted_days, shown_days, column, save_model = False, print_metric = False, predicted_days_in_future = 0):
+    #Lara Ahrens
+    #Auslagerung in Funktion mit Verallgemeinerung Pascal Winkler
     print('Predict ' + column + ' with LinReg...')
     data = data.groupby(['Meldedatum']).sum().sort_values(by = ['Meldedatum'])
     data = data.filter(items=[column])

@@ -78,7 +78,7 @@ def generate_heatmap(covid_data, file_name = "Heatmap"):
     print('Heatmap created.')
     
 def generate_chart(covid_data):
-    #Nina
+    #Nina Renken
     print('Creating Heatmapchart...')
     data = covid_data.groupby(['Altersgruppe']).sum()
     

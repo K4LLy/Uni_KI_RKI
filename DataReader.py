@@ -1,4 +1,4 @@
-#Pascal
+#Pascal Winkler
 import pandas as pd
 import datetime as dt
 
