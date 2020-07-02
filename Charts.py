@@ -66,6 +66,7 @@ def generate_bar_chart(covid_data):
     print('Barchart created.')    
     matplot.savefig("Result\\" + 'barchart_erkrankung_geschlecht' + ".png")
     matplot.show()
+    
 #Grafik nach Meldedatum
 def generate_graph(covid_data): 
     #Grundstruktur Lara Ahrens mit Graph fuer jedes Meldedatum 
